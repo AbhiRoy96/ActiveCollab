@@ -4,22 +4,18 @@ import Faker from 'faker';
 
 
 const Conn = new Sequelize(
-  'food_deli_network',
+  'collabPro',
   'root',
   'soujonno#*',
   {
     dialect: 'mysql',
     host: 'localhost'
   }
-) ;
+);
 
 
 const Users = Conn.define('users', {
-  firstName: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  lastName: {
+  userName: {
     type: Sequelize.STRING,
     allowNull: false
   },
@@ -28,10 +24,34 @@ const Users = Conn.define('users', {
     validate: {
       isEmail: true
     }
+  },
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  dob: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  phoneNumber: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  avatarLink: {
+    type: Sequelize.STRING,
+    allowNull: true
   }
 });
 
-const UserOrder = Conn.define('user_order', {
+/*const UserOrder = Conn.define('user_order', {
   itemName: {
     type: Sequelize.STRING,
     allowNull: false
@@ -60,5 +80,20 @@ UserOrder.belongsTo(Users);
     });
   });
 });*/
+
+Conn.sync({ force: true }).then(()=> {
+  _.times(10, ()=> {
+    return Users.create({
+      userName: Faker.internet.userName(),
+      email: Faker.internet.email(),
+      firstName: Faker.name.firstName(),
+      lastName: Faker.name.lastName(),
+      dob: Faker.name.lastName(),
+      phoneNumber: Faker.phone.phoneNumber(),
+      password: Faker.internet.password(),
+      avatarLink: Faker.image.imageUrl()
+    })
+  });
+});
 
 export default Conn;

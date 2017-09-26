@@ -6,3 +6,18 @@ http://localhost:4000/graphql?query={Customers(id:%203){firstName%20email}}
 			0	
 				firstName	"Rebeka"
 				email		"Angelica49@yahoo.com"
+
+
+
+----------- killing port ------------------------------------------------------
+
+1.	netstat -ano | findstr :yourPortNumber
+	TCP    [::]:5500              [::]:0                 LISTENING       6392
+
+2.	taskkill /PID typeyourPIDhere /F
+SUCCESS: The process with PID 6392 has been terminated.
+
+
+--------------- Updated users data --------------------------------------------
+http://localhost:4000/graphql?query={Customers{id userName email firstName lastName dob phoneNumber password avatarLink}}
+http://localhost:4000/graphql?query={Customers(userName:%20%22Hilario_Legros82%22){id%20userName%20email%20firstName%20lastName%20dob%20phoneNumber%20password%20avatarLink}}

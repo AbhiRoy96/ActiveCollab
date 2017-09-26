@@ -21,6 +21,7 @@
     "express-graphql": "^0.6.7",
     "faker": "^4.1.0",
     "graphql": "^0.10.5",
+    "graphql-date": "^1.0.3",
     "graphql-relay": "^0.3.6",
     "lodash": "^4.17.4",
     "mysql": "^2.14.1",

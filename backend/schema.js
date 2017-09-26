@@ -7,10 +7,10 @@ import {
   GraphQLList,
   GraphQLNonNull
 } from 'graphql';
-
+var GraphQLDate = require('graphql-date')
 import Db from './db';
 
-const UserOrder = new GraphQLObjectType({
+/*const UserOrder = new GraphQLObjectType({
   name: 'UserOrder',
   description: 'Orders Taken',
   fields () {
@@ -35,7 +35,7 @@ const UserOrder = new GraphQLObjectType({
       }
     };
   }
-});
+});*/
 
 const User = new GraphQLObjectType({
   name: 'User',
@@ -46,6 +46,18 @@ const User = new GraphQLObjectType({
         type: GraphQLInt,
         resolve (users) {
           return users.id;
+        }
+      },
+      userName: {
+        type: GraphQLString,
+        resolve(users) {
+          return users.userName;
+        }
+      },
+      email: {
+        type: GraphQLString,
+        resolve(users) {
+          return users.email;
         }
       },
       firstName: {
@@ -60,10 +72,28 @@ const User = new GraphQLObjectType({
           return users.lastName;
         }
       },
-      email: {
+      dob: {
         type: GraphQLString,
         resolve (users) {
-          return users.email;
+          return users.dob;
+        }
+      },
+      phoneNumber: {
+        type: GraphQLString,
+        resolve (users) {
+          return users.phoneNumber;
+        }
+      },
+      password: {
+        type: GraphQLString,
+        resolve (users) {
+          return users.password;
+        }
+      },
+      avatarLink: {
+        type: GraphQLString,
+        resolve (users) {
+          return users.avatarLink;
         }
       },
     };
@@ -81,9 +111,30 @@ const Query = new GraphQLObjectType({
           id: {
             type: GraphQLInt
           },
+          userName: {
+            type: GraphQLString,
+          },
+          email: {
+            type: GraphQLString,
+          },
           firstName: {
             type: GraphQLString
-          }
+          },
+          lastName: {
+            type: GraphQLString,
+          },
+          dob: {
+            type: GraphQLString,
+          },
+          phoneNumber: {
+            type: GraphQLString,
+          },
+          password: {
+            type: GraphQLString,
+          },
+          avatarLink: {
+            type: GraphQLString,
+          },
         },
         resolve (root, args) {
           return Db.models.users.findAll({ where: args });
