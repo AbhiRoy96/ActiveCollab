@@ -1,0 +1,8 @@
+http://localhost:4000/graphql?query={Customers{id firstName email}}
+http://localhost:4000/graphql?query={Customers(id:%203){firstName%20email}}
+*Example*
+	data	
+		Customers	
+			0	
+				firstName	"Rebeka"
+				email		"Angelica49@yahoo.com"
