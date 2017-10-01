@@ -6,7 +6,7 @@ import _ from 'lodash';
 const Conn = new Sequelize(
   'collabPro',
   'root',
-  'password',
+  'soujonno#*',
   {
     dialect: 'mysql',
     host: 'localhost'
@@ -43,7 +43,7 @@ const Projects = Conn.define('projects', {
   startDate: { type: Sequelize.DATE, allowNull: false },
   endDate: { type: Sequelize.DATE, allowNull: false },
   status: { type: Sequelize.STRING, allowNull: false },
-  percentCompletion { type: Sequelize.DECIMAL(4,2), allowNull: false }
+  percentCompletion: { type: Sequelize.DECIMAL(4,2), allowNull: false }
 });
 
 const Teams = Conn.define('teams', {
@@ -118,12 +118,22 @@ const Tickits = Conn.define('tickits', {
 Users.hasMany(Projects);
 Users.hasMany(Requests);
 Users.hasMany(NNotifications);
-Users.hasMany(Teams);
-Teams.belongsTo(Users);
 Projects.belongsTo(Users);
-Projects.hasMany(Timelines);
-Projects.hasMany(Todos);
-Projects.hasMany(Tickits);
-Timelines.hasMany(Slots);
+
+
+/* +++++++++  Relations that are auto-implemented:  ++++++++++++
+
+      Projects.hasMany(Timelines);
+      Projects.hasMany(Todos);
+      Projects.hasMany(Tickits);
+      Timelines.hasMany(Slots);
+      Users.hasMany(Teams);
+      Teams.belongsTo(Users);
+
+
+/* ======== CREATING THE RELATIONS OF THE DATABASE ========= */
+
+//Conn.sync({ force: true });
+
 
 export default Conn;

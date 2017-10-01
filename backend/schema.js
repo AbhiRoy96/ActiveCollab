@@ -2,6 +2,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
   GraphQLInt,
+  GraphQLFloat,
   GraphQLDecimal,
   GraphQLSchema,
   GraphQLList,
@@ -68,7 +69,9 @@ const Project = new GraphQLObjectType({
         resolve (projects) { return projects.name; } },
       description: { type: GraphQLString,
         resolve (projects) { return projects.description; } },
-      budget: { type: GraphQLDecimal,
+      company: { type: GraphQLString,
+        resolve (projects) { return projects.company; } },
+      budget: { type: GraphQLFloat,
         resolve (projects) { return projects.budget; } },
       manager: { type: GraphQLString,
         resolve (projects) { return projects.manager; } },
@@ -78,7 +81,7 @@ const Project = new GraphQLObjectType({
         resolve (projects) { return projects.endDate; } },
       status: { type: GraphQLString,
         resolve (projects) { return projects.status; } },
-      percentCompletion: { type: GraphQLDecimal,
+      percentCompletion: { type: GraphQLFloat,
         resolve (projects) { return projects.percentCompletion; } }
     };
   }
@@ -132,6 +135,8 @@ const Slot = new GraphQLObjectType({
     return {
       id: { type: GraphQLInt,
         resolve (slots) { return slots.id; } },
+      timelineId: { type: GraphQLString,
+        resolve (slots) { return slots.timelineId; } },
       description: { type: GraphQLString,
         resolve (slots) { return slots.description; } },
       startingTimestamp: {type: GraphQLDate,
@@ -470,12 +475,12 @@ const Mutation = new GraphQLObjectType({
           name: { type: new GraphQLNonNull(GraphQLString) },
           description: { type: new GraphQLNonNull(GraphQLString) },
           company: { type: new GraphQLNonNull(GraphQLString) },
-          budget: { type: new GraphQLNonNull(GraphQLDecimal) },
+          budget: { type: new GraphQLNonNull(GraphQLFloat) },
           manager: { type: new GraphQLNonNull(GraphQLString) },
           startDate: { type: new GraphQLNonNull(GraphQLDate) },
           endDate: { type: new GraphQLNonNull(GraphQLDate) },
           status: { type: new GraphQLNonNull(GraphQLString) },
-          percentCompletion: { type: new GraphQLNonNull(GraphQLDecimal) }
+          percentCompletion: { type: new GraphQLNonNull(GraphQLFloat) }
       },
       resolve (_, args) {
         return Db.models.projects.create({
@@ -825,7 +830,7 @@ const Mutation = new GraphQLObjectType({
               name: { type: GraphQLString },
               description: { type: GraphQLString },
               company: { type: GraphQLString },
-              budget: { type: GraphQLDecimal },
+              budget: { type: GraphQLFloat },
               manager: { type: GraphQLString },
               startDate: { type: GraphQLDate },
               endDate: { type: GraphQLDate },
@@ -844,7 +849,7 @@ const Mutation = new GraphQLObjectType({
         },
 
 
-        updateProjectStatus{
+        updateProjectStatus: {
           type: Project,
           args: {
             id: { type: new GraphQLNonNull(GraphQLInt) },
@@ -859,12 +864,12 @@ const Mutation = new GraphQLObjectType({
         },
 
 
-        updateProjectCompletion{
+        updateProjectCompletion: {
           type: Project,
           args: {
             id: { type: new GraphQLNonNull(GraphQLInt) },
             projectId: { type: GraphQLString },
-            percentCompletion: { type: GraphQLDecimal }
+            percentCompletion: { type: GraphQLFloat }
           },
           resolve (_, args) {
             return Db.models.projects.update({
@@ -874,7 +879,7 @@ const Mutation = new GraphQLObjectType({
         },
 
 
-        updateSlotStatus{
+        updateSlotStatus: {
           type: Slot,
           args: {
             id: { type: new GraphQLNonNull(GraphQLInt) },
