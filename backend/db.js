@@ -1,99 +1,129 @@
 import Sequelize from 'sequelize';
 import _ from 'lodash';
-import Faker from 'faker';
 
+/*  Database Connections Specs -- dbName, dbUsername and password */
 
 const Conn = new Sequelize(
   'collabPro',
   'root',
-  'soujonno#*',
+  'password',
   {
     dialect: 'mysql',
     host: 'localhost'
   }
 );
 
+/*  Data Reserve Structures -- Storing User and Project information */
 
 const Users = Conn.define('users', {
-  userName: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  email: {
-    type: Sequelize.STRING,
-    validate: {
-      isEmail: true
-    }
-  },
-  firstName: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  lastName: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  dob: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  phoneNumber: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  avatarLink: {
-    type: Sequelize.STRING,
-    allowNull: true
-  }
+  userId: { type: Sequelize.STRING, allowNull: false },           // User Name
+  email: { type: Sequelize.STRING, validate: { isEmail: true } },
+  password: { type: Sequelize.STRING, allowNull: false },
+  firstName: { type: Sequelize.STRING, allowNull: false },
+  lastName: { type: Sequelize.STRING, allowNull: false },
+  dob: { type: Sequelize.DATE, allowNull: false },
+  phoneNumber: { type: Sequelize.STRING, allowNull: false },
+  company: { type: Sequelize.STRING, allowNull: false },
+  department: { type: Sequelize.STRING, allowNull: false },
+  userType: { type: Sequelize.STRING, allowNull: false },
+  address: { type: Sequelize.STRING, allowNull: false },
+  city: { type: Sequelize.STRING, allowNull: false },
+  state: { type: Sequelize.STRING, allowNull: true },
+  country: { type: Sequelize.STRING, allowNull: false },
+  zip: { type: Sequelize.STRING, allowNull: false }
 });
 
-/*const UserOrder = Conn.define('user_order', {
-  itemName: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  itemPrice: {
-    type: Sequelize.DECIMAL(10,2),
-    allowNull: false
-  }
+const Projects = Conn.define('projects', {
+  projectId: { type: Sequelize.STRING, allowNull: false },    // Project Handle
+  name: { type: Sequelize.STRING, allowNull: false },
+  description: { type: Sequelize.STRING, allowNull: false },
+  company: { type: Sequelize.STRING, allowNull: false },
+  budget: { type: Sequelize.DECIMAL(10,2), allowNull: false },
+  manager: { type: Sequelize.STRING, allowNull: false },
+  startDate: { type: Sequelize.DATE, allowNull: false },
+  endDate: { type: Sequelize.DATE, allowNull: false },
+  status: { type: Sequelize.STRING, allowNull: false },
+  percentCompletion { type: Sequelize.DECIMAL(4,2), allowNull: false }
 });
 
-// Relations
-Users.hasMany(UserOrder);
-UserOrder.belongsTo(Users);
-
-/*Conn.sync({ force: true }).then(()=> {
-  _.times(10, ()=> {
-    return Users.create({
-      firstName: Faker.name.firstName(),
-      lastName: Faker.name.lastName(),
-      email: Faker.internet.email()
-    }).then(users => {
-      return users.createUser_order({
-        itemName: 'Masala Dosa',
-        itemPrice: 50.55
-      });
-    });
-  });
-});*/
-
-Conn.sync({ force: true }).then(()=> {
-  _.times(10, ()=> {
-    return Users.create({
-      userName: Faker.internet.userName(),
-      email: Faker.internet.email(),
-      firstName: Faker.name.firstName(),
-      lastName: Faker.name.lastName(),
-      dob: Faker.name.lastName(),
-      phoneNumber: Faker.phone.phoneNumber(),
-      password: Faker.internet.password(),
-      avatarLink: Faker.image.imageUrl()
-    })
-  });
+const Teams = Conn.define('teams', {
+  teamId: { type: Sequelize.STRING, allowNull: false },          // Team Handle
+  userId: { type: Sequelize.STRING, allowNull: false },
+  projectId: { type: Sequelize.STRING, allowNull: false },
+  joiningDate: { type: Sequelize.DATE, allowNull: false }
 });
+
+const Timelines = Conn.define('timelines', {
+  projectId: { type: Sequelize.STRING, allowNull: false },
+  timelineId: { type: Sequelize.STRING, allowNull: false },
+  title: { type: Sequelize.STRING, allowNull: false }
+});
+
+const Slots = Conn.define('slots', {
+  timelineId: { type: Sequelize.STRING, allowNull: false },
+  description: { type: Sequelize.STRING, allowNull: false },
+  startingTimestamp: { type: Sequelize.DATE, allowNull: false },
+  endingTimestamp: { type: Sequelize.DATE, allowNull: false },
+  status: { type: Sequelize.STRING, allowNull: false }
+});
+
+const Requests = Conn.define('requests', {
+  senderUserId: { type: Sequelize.STRING, allowNull: false },
+  receiverUserId: { type: Sequelize.STRING, allowNull: false },
+  projectId: { type: Sequelize.STRING, allowNull: false },
+  status: { type: Sequelize.STRING, allowNull: false }
+});
+
+const NNotifications = Conn.define('nnotifications', {
+  senderUserId: { type: Sequelize.STRING, allowNull: false },
+  projectId: { type: Sequelize.STRING, allowNull: false },
+  sTimestamp: { type: Sequelize.DATE, allowNull: false },
+  title: { type: Sequelize.STRING, allowNull: false },
+  body: { type: Sequelize.STRING, allowNull: false },
+  status: { type: Sequelize.STRING, allowNull: false }
+});
+
+const Todos = Conn.define('todos', {
+  projectId: { type: Sequelize.STRING, allowNull: false },
+  title: { type: Sequelize.STRING, allowNull: false },
+  description: { type: Sequelize.STRING, allowNull: false },
+  department: { type: Sequelize.STRING, allowNull: false },
+  createdBy: { type: Sequelize.STRING, allowNull: false },
+  createDate: { type: Sequelize.DATE, allowNull: false },
+  broadcastTo: { type: Sequelize.STRING, allowNull: false },
+  deadline: { type: Sequelize.DATE, allowNull: false },
+  status: { type: Sequelize.STRING, allowNull: false },
+  resolvedBy: { type: Sequelize.STRING, allowNull: false },
+  resolvedOn: { type: Sequelize.DATE, allowNull: false }
+});
+
+const Tickits = Conn.define('tickits', {
+  title: { type: Sequelize.STRING, allowNull: false },
+  description: { type: Sequelize.STRING, allowNull: false },
+  department: { type: Sequelize.STRING, allowNull: false },
+  projectId: { type: Sequelize.STRING, allowNull: false },
+  type: { type: Sequelize.STRING, allowNull: false },
+  status: { type: Sequelize.STRING, allowNull: false },
+  bookedBy:{ type: Sequelize.STRING, allowNull: false },
+  bookedOn: { type: Sequelize.DATE, allowNull: false },
+  resolvedBy: { type: Sequelize.STRING, allowNull: false },
+  verificationStatus: { type: Sequelize.STRING, allowNull: false },
+  verifiedBy: { type: Sequelize.STRING, allowNull: false },
+  verifiedOn: { type: Sequelize.DATE, allowNull: false }
+});
+
+
+/*  Relations -- according to the structure of the database */
+
+Users.hasMany(Projects);
+Users.hasMany(Requests);
+Users.hasMany(NNotifications);
+Users.hasMany(Teams);
+Teams.belongsTo(Users);
+Projects.belongsTo(Users);
+Projects.hasMany(Timelines);
+Projects.hasMany(Todos);
+Projects.hasMany(Tickits);
+Timelines.hasMany(Slots);
 
 export default Conn;
