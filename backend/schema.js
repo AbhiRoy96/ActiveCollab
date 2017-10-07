@@ -282,7 +282,7 @@ const Query = new GraphQLObjectType({
       signInAuth: {
         type: new GraphQLList(User),
         args: {
-          userId: { type: GraphQLString },
+          email: { type: GraphQLString },
           password: { type: GraphQLString }
         },
         resolve (root, args) {
@@ -293,7 +293,7 @@ const Query = new GraphQLObjectType({
       forgotPassword: {
         type: new GraphQLList(User),
         args: {
-          userId: { type: GraphQLString }
+          email: { type: GraphQLString }
         },
         resolve (root, args) {
           return Db.models.users.findAll({ where: args });
@@ -304,7 +304,7 @@ const Query = new GraphQLObjectType({
         type: new GraphQLList(User),
         args: {
           id: { type: GraphQLInt },
-          userId: { type: GraphQLString },
+          email: { type: GraphQLString },
           password: { type: GraphQLString }
         },
         resolve (root, args) {
@@ -542,7 +542,7 @@ const Mutation = new GraphQLObjectType({
       args: {
           teamId: { type: new GraphQLNonNull(GraphQLString) },
           userId: { type: new GraphQLNonNull(GraphQLString) },
-          projectId: { type: new GraphQLNonNull(GraphQLDate) },
+          projectId: { type: new GraphQLNonNull(GraphQLString) },
           joiningDate: { type: new GraphQLNonNull(GraphQLDate) }
       },
       resolve (_, args) {

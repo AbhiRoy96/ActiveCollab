@@ -1,0 +1,48 @@
+h1{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 300;
+	font-size: 2.0rem;
+	text-align: center;
+	color: #42A5F5;
+}
+
+p{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 200;
+	font-size: 1.1rem;
+	text-align: center;
+	color: #82B1FF;
+}
+
+.btn-primary:hover{
+	background-color: #101115;
+}
+
+
+.flex-container{
+	padding: 0;
+	margin: 0;
+	border: 0;
+
+	width: 100%;
+	height: 50vh;
+}
+
+.flex-item{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 200;
+
+	text-align: center;
+}
+
+.display-3{
+	font-size: 4rem;
+	font-weight: 300;
+	text-align: center;	 
+	color: #1565C0;
+}
+
+.my-4{
+	background-color: #BBDEFB;
+	width: 80%;
+}
