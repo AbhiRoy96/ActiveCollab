@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-error-component',
   templateUrl: './error-component.component.html',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponentComponent implements OnInit {
 
-  constructor() { }
+ 
 
   ngOnInit() {
   }
+
+
 
 }

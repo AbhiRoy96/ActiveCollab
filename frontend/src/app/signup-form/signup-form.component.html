@@ -1,0 +1,110 @@
+<div class="flex-parent">
+	<form>
+	<!-- Sign Up Form Starts Here -->	
+		
+		<div class="flex-container">
+			
+			<div class="flex-item">
+
+				<!-- Flex Item -->
+			    <h2>User Account Details</h2>
+			    <br>
+
+				<div class="form-group">
+					<label for="InputEmail">Email address</label>
+				    <input type="email" name="username" [(ngModel)]="username" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
+				    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				</div>
+			    <div class="form-group">
+				    <label for="password">Password</label>
+				    <input type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Password" >
+				</div>
+				<div class="form-group">
+				    <label for="confirm">Confirm Password</label>
+				    <input type="password" name="confirm" [(ngModel)]="confirm" class="form-control" placeholder="Confirm Password" >
+				</div>
+			    
+			    <br>
+			    <br>
+
+			    <h2>Commercial Details</h2>
+			    <br>
+
+			    <div class="form-group">
+				    <label for="InputEmail">User Id</label>
+				    <input type="text" name="userid" [(ngModel)]="userid" class="form-control" aria-describedby="useridHelp" placeholder="User Id">
+				    <small id="useridHelp" class="form-text text-muted">Please enter your Employee ID or Customer ID.</small>
+				</div>
+				<div class="form-group">
+				    <label for="usertype">Service</label>
+				    <input type="text" name="usertype" [(ngModel)]="usertype" class="form-control" placeholder="User Type(Project Manager, Frontend Developer, etc)">
+				</div>
+				<div class="form-group">
+				    <label for="department">Last Name</label>
+				    <input type="text" name="department" [(ngModel)]="department" class="form-control" placeholder="Department">
+				</div>
+				<div class="form-group">    
+				    <label for="company">Company</label>
+				    <input type="text" name="company" [(ngModel)]="company" class="form-control" placeholder="Company Name">
+				</div>
+			</div>
+			<!-- Flex Item -->
+			<div class="flex-item">
+				<h2>Personal Details</h2>
+				<br>
+
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+				    <input type="text" name="firstname" [(ngModel)]="firstname" class="form-control" placeholder="First Name">
+				</div>
+				<div class="form-group">
+				    <label for="lastName">Last Name</label>
+				    <input type="text" name="lastname" [(ngModel)]="lastname" class="form-control" placeholder="Last Name">
+				</div>
+				<div class="form-group">
+				    <label for="dob">Date Of Birth</label>
+				    <input type="text" name="dob" [(ngModel)]="dob" class="form-control" placeholder="Please enter date in this format YYYY-MM-DDTHH:MM:SS.SSSSZ">
+				</div>
+				<div class="form-group">
+				    <label for="phone">Phone Number</label>
+				    <input type="text" name="phone" [(ngModel)]="phone" class="form-control" placeholder="Phone Number">
+				</div>
+				<div class="form-group">
+				    <label for="address">Address Line 1</label>
+				    <input type="text" name="address" [(ngModel)]="address" class="form-control" placeholder="Address Line 1">
+				</div>
+				<div class="form-group">    
+				    <label for="city">City</label>
+				    <input type="text" name="city" [(ngModel)]="city" class="form-control" placeholder="City">
+				</div>
+				<div class="form-group">
+				    <label for="state">State</label>
+				    <input type="text" name="state" [(ngModel)]="state" class="form-control" placeholder="State">
+				</div>
+				<div class="form-group">
+				    <label for="country">Phone Number</label>
+				    <input type="text" name="country" [(ngModel)]="country" class="form-control" placeholder="Country">
+				</div>
+				<div class="form-group">
+					<label for="zip">PIN/ZIP Code</label>
+				    <input type="text" name="zip" [(ngModel)]="zip" class="form-control" placeholder="PIN/ZIP Code">
+				</div>	  
+			</div>
+			<!-- Flex Item -->
+			
+
+		</div>
+		<br>
+		<div class="form-check was-validated">
+    		<label class="form-check-label custom-control custom-checkbox">
+      		<input type="checkbox" class="form-check-input custom-control-input" required> 
+      		<span class="custom-control-indicator"></span>
+    		<span class="custom-control-description">I have read the all the <a class="terms" href="#">terms and conditions</a> carefully, as stated by your company and will abide by them.</span>     		
+    		</label>
+  		</div>
+		<br>
+		<button type="button" class="btn btn-primary" (click)='validateSignUp()' >Sign Up</button>
+
+	<!-- Sign Up Form Ends Here -->
+	</form>
+</div>

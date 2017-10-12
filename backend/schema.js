@@ -330,7 +330,7 @@ const Query = new GraphQLObjectType({
         args: {
           id: { type: GraphQLInt },
           teamId: { type: GraphQLString },
-          userId: { type: GraphQLString },
+          email: { type: GraphQLString },
           projectId: { type: GraphQLString }
         },
         resolve (root, args) {

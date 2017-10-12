@@ -35,4 +35,9 @@ private isAuthenticated: Boolean;
   	window.localStorage.removeItem('valid');
   }
 
+  forgotPasswordOpenSession(){
+    window.sessionStorage.setItem('session-id', '18242BA32EDFBDD34296142ADDF7D3D8')
+    window.sessionStorage.setItem('session-status', 'open');
+  }
+
 }

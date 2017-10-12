@@ -21,3 +21,9 @@ SUCCESS: The process with PID 6392 has been terminated.
 --------------- Updated users data --------------------------------------------
 http://localhost:4000/graphql?query={Customers{id userName email firstName lastName dob phoneNumber password avatarLink}}
 http://localhost:4000/graphql?query={Customers(userName:%20%22Hilario_Legros82%22){id%20userName%20email%20firstName%20lastName%20dob%20phoneNumber%20password%20avatarLink}}
+
+
+
+//console.log(userData);
+    			//console.log(this.obtainedUserName);   
+          //console.log("Sign In validated! Welcome "+ userData.data.signInAuth[0].firstName +" !");

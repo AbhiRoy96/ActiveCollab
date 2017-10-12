@@ -53,3 +53,18 @@ a{
 	font-weight: 300;
 	text-align: left;
 }
+
+
+.signin:active{
+	background-color: #F50057;
+	border-color: #F50057; 
+}
+
+.errorDetect{
+	font-style: italic;
+	font-weight: 300;
+	font-size: 1rem;
+	text-align: justify;
+
+	color: #E3F2FD;
+}
