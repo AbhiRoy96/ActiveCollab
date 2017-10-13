@@ -43,16 +43,21 @@ private obtainedPassword: string;
         if(EMAIL_REGEX.test(this.username)){
           this.validateStatus = true;
         }else{
+          document.getElementById("username").classList.add("invalid-input");
+          document.getElementById("password").classList.add("invalid-input");
           this.validateStatus = false;
           this.errorDetl = "Enter a valid email";
         }
       }else{
+        document.getElementById("username").classList.add("invalid-input");
+        document.getElementById("password").classList.add("invalid-input");
         this.validateStatus = false;
         this.errorDetl = "Email is required";        
       }
 
       if(this.validateStatus){
         if(this.password == null){
+          document.getElementById("username").classList.add("invalid-input");
           this.errorDetl = "Password is required";
           this.validateStatus = false;
         }else{ 

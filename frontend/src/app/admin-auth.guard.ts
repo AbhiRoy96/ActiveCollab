@@ -12,8 +12,7 @@ export class AdminAuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-  	if (this.userAuth.getAuthUser()){ 
-  	 	console.log('true'); 
+  	if (this.userAuth.getAuthUser()){  
   	 	return true; 
   	 	}else { 
   	 	this.router.navigate(['forbidden']); 

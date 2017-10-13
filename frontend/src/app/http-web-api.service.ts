@@ -36,4 +36,14 @@ export class HttpWebApiService {
   }
 
 
+  verifyDualLogin(username){
+    const dualData = this._Http.get('http://localhost:4000/graphql?query={signInAuth(email: \"'+ username +'\"){ userType } }')
+      .map((res:Response) => res.json());
+
+    return dualData;
+  }
+
+
 }
+
+

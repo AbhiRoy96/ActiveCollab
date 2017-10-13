@@ -14,11 +14,11 @@
 		  	</div>
 		  	<div class="form-group">
 			    <label for="InputPassword">Password</label>
-			    <input type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Password" required="required"/>
+			    <input type="password" id="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Password" required="required"/>
 			    <div class="invalid-feedback">Please provide a valid password.</div>
 		  	</div>
-		  	<br>
 		  	<p class="errorDetect">{{errorDetl}}</p>
+		  	<br>
 		  	<button type="button" id="signin" class="btn btn-primary" (click)='validateSignIn()' >Sign In</button>
 
 		</form>

@@ -3,21 +3,22 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { UserAuthService } from './user-auth.service';
 import { Observable } from 'rxjs/Observable';
 
+
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class PasswordGuard implements CanActivate {
 
   constructor(private userAuth: UserAuthService, private router: Router){}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    
-  	if (this.userAuth.getAuthUser()){  
-  	 	return true; 
-  	 	}else { 
-  	 	this.router.navigate(['forbidden']); 
-  	 	return false;
-  	}
-  	  
+
+    if (this.userAuth.forgotPasswordSessionAuth()){  
+       return true; 
+      }else{
+       this.router.navigate(['forbidden']); 
+       return false;
+     }
+
   }
 }

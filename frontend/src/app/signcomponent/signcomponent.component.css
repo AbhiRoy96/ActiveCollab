@@ -61,10 +61,22 @@ a{
 }
 
 .errorDetect{
-	font-style: italic;
 	font-weight: 300;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	text-align: justify;
 
 	color: #E3F2FD;
 }
+
+#username:focus{
+	border: 2px solid #1A237E;
+}
+
+#password:focus{
+	border: 2px solid #1A237E;
+}
+
+.invalid-input{
+	border-bottom: 2px solid red;
+}
+

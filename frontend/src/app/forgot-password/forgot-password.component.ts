@@ -48,7 +48,7 @@ export class ForgotPasswordComponent {
 	  				this.obtainedUsername = userData.data.forgotPassword[0].email;
 	  				if(this.username == this.obtainedUsername){
 	  					this.authService.forgotPasswordOpenSession();
-	  					this.router.navigate(['']);
+	  					this.router.navigate(['/updatePassword',this.username]);
 	  				}
   				}
 			});

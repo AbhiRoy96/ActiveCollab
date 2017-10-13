@@ -1,0 +1,42 @@
+p strong{
+	font-weight: 700;
+}
+
+nav{
+	background-color: #1565C0;
+}
+
+a{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 200;
+	color: white;
+}
+
+.nav-item:hover{
+	color: #0D47A1;
+	background-color: #90CAF9;
+}
+
+.nav-item{
+	color: #90CAF9;
+	font-weight: 400;
+}
+
+.main{
+	align-content: center;
+	text-align: center;
+	font-size: 1.3rem;
+
+	height:100vh;
+	padding: 230px 350px 200px 350px;
+	background-color: #d3d9df;
+}
+
+.progress-bar{
+ width: 1%;
+ height: 25px;
+}
+
+#but{
+	font-weight: 400;
+}
