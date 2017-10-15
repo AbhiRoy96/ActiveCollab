@@ -56,12 +56,8 @@ import { ViewsSlotComponent } from './dashboard-components/views-slot/views-slot
 import { CreateSlotComponent } from './dashboard-components/create-slot/create-slot.component';
 import { UpdateSlotComponent } from './dashboard-components/update-slot/update-slot.component';
 
-import { CreateNewsComponent } from './dashboard-components/create-news/create-news.component';
 import { NewsFeedsComponent } from './dashboard-components/news-feeds/news-feeds.component';
-import { ResFeedsComponent } from './dashboard-components/res-feeds/res-feeds.component';
 
-import { GenerateRequestComponent } from './dashboard-components/generate-request/generate-request.component';
-import { CreateRequestComponent } from './dashboard-components/create-request/create-request.component';
 import { ResRequestComponent } from './dashboard-components/res-request/res-request.component';
 
 
@@ -117,6 +113,14 @@ const appRoutes:Routes = [
          path: 'myteams',
          component: ViewTeamComponent
        },
+       {
+         path: 'myteamrequests',
+         component: ResRequestComponent
+       },
+       {
+         path: 'newsfeeds',
+         component: NewsFeedsComponent
+       },
 
      ]
   },
@@ -162,11 +166,7 @@ const appRoutes:Routes = [
     ViewsSlotComponent,
     CreateSlotComponent,
     UpdateSlotComponent,
-    CreateNewsComponent,
     NewsFeedsComponent,
-    ResFeedsComponent,
-    GenerateRequestComponent,
-    CreateRequestComponent,
     ResRequestComponent,
     MainPageComponent,
     LoadingPageComponent,

@@ -409,7 +409,8 @@ const Query = new GraphQLObjectType({
         type: new GraphQLList(Request),
         args: {
           senderUserId: { type: GraphQLString },
-          receiverUserId: { type: GraphQLString }
+          receiverUserId: { type: GraphQLString },
+          status: { type: GraphQLString }
         },
         resolve (root, args) {
           return Db.models.requests.findAll({ where: args });
@@ -694,13 +695,14 @@ const Mutation = new GraphQLObjectType({
     },
 
     deleteTeamJoin: {
-      type: Request,
+      type: Team,
       args: {
+        teamId: { type: new GraphQLNonNull(GraphQLString)  },
+        userId: { type: new GraphQLNonNull(GraphQLString)  },
         projectId: { type: new GraphQLNonNull(GraphQLString) },
-        receiverUserId: { type: new GraphQLNonNull(GraphQLString)  }
       },
       resolve(_, args) {
-        return Db.models.requests.destroy({ where: args});
+        return Db.models.teams.destroy({ where: args});
       }
     },
 

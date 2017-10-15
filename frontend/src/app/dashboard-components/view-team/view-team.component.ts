@@ -20,10 +20,19 @@ export class ViewTeamComponent implements OnInit {
   constructor(private _httpWebService: HttpWebApiService, private authService: UserAuthService, private router: Router) { }
 
   ngOnInit() {
+    document.getElementById('message').style.visibility = 'hidden';
+    document.getElementById('message').classList.remove("mess");
+
   		this._httpWebService.myTeams(this.userid)
     		.subscribe(resp => {
     			const userData = resp;
     			this.testarr = userData.data.teamDetails;
+
+          if(this.testarr.length == 0){
+            document.getElementById('message').classList.add("mess");
+            document.getElementById('cardss').style.visibility = 'hidden';
+            document.getElementById('message').style.visibility = 'visible';
+          }
     		},
     		error => {
             this.errors = error;

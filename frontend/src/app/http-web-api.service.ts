@@ -80,6 +80,70 @@ export class HttpWebApiService {
   }
 
 
+  getRequests(receiver){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query={myRequests(receiverUserId: "'+receiver+'", status: \"pending\") {id senderUserId receiverUserId projectId } }')
+      .map((res:Response) => res.json());
+
+     return teamData;
+  }
+
+
+  updateRequest(id, status){
+    const newUser = "http://localhost:4000/graphql?query=mutation{requestResponse(id:"+id+", status: \""+status+"\") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+
+  }
+
+  createNews(sender, projectid, timest, title, body){
+    const newUser = "http://localhost:4000/graphql?query=mutation{createFeed(senderUserId: \""+sender+"\", projectId: \""+projectid+"\", sTimestamp: \""+timest+"\", title: \""+title+"\", body: \""+body+"\", status: \"unread\") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+  updateFeeds(id){
+    const newUser = "http://localhost:4000/graphql?query=mutation{feedsResponse(id:"+id+", status: \"read\") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+
+  newsFeeds(projectid){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query={newsFeeds(projectId: \"'+projectid+'\" status: \"unread\"){senderUserId projectId sTimestamp title body} }')
+      .map((res:Response) => res.json());
+
+     return teamData;
+  }
+
+
+
+  myProjects(userid){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query={teamDetails(userId: \"'+userid+'\"){projectId} }')
+      .map((res:Response) => res.json());
+
+     return teamData;
+  }
+
+
+  deleteTeamRequest(teamid, userid, projectid){
+    const newUser = "http://localhost:4000/graphql?query=mutation{deleteTeamJoin(teamId: \""+teamid+"\", userId: \""+userid+"\", projectId: \""+projectid+"\"){ id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+
 }
 
 

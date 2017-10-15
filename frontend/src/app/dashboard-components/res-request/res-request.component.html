@@ -1,3 +1,38 @@
-<p>
-  res-request works!
-</p>
+<div class="request-body">
+<h1 class="display-3"> My Pending Requests </h1>
+
+<p id="message" class="mess"> You do not have any pending requests to monitor! </p> 
+	<div id="requ" class="all-requests">
+		<ul class="team">
+			<li *ngFor="let item of testarr"> 
+
+
+				<div class="card" style="width: 50rem;">
+				  <div class="card-body">
+				    <h4 class="card-title">Team Request</h4>
+				    <p class="card-text">Will you like to join my team? Will be waiting for you to join!</p>
+				  </div>
+				  <ul class="list-group list-group-flush">
+				  	<li class="list-group-item"><strong>Invitation from: </strong>{{item.senderUserId}}</li>
+				    <li class="list-group-item"><strong>Project Handle: </strong>{{item.projectId}}</li>
+				    <li class="list-group-item">
+				    	<button type="button" class="btn btn-primary btn-lg" (click)="acceptRequest(item)">Join</button>
+				    	<button type="button" class="btn btn-secondary btn-lg" (click)="rejectRequest(item)">Reject</button>
+				    </li>
+
+				  </ul>
+				</div>
+
+				<br><br>
+
+
+
+			</li>
+		</ul>
+
+
+
+
+
+	</div>
+</div>
