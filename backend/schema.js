@@ -330,7 +330,7 @@ const Query = new GraphQLObjectType({
         args: {
           id: { type: GraphQLInt },
           teamId: { type: GraphQLString },
-          email: { type: GraphQLString },
+          userId: { type: GraphQLString },
           projectId: { type: GraphQLString }
         },
         resolve (root, args) {
@@ -403,7 +403,22 @@ const Query = new GraphQLObjectType({
         resolve (root, args) {
           return Db.models.nnotifications.findAll({ where: args });
         }
-      }
+      },
+
+      myRequests: {
+        type: new GraphQLList(Request),
+        args: {
+          senderUserId: { type: GraphQLString },
+          receiverUserId: { type: GraphQLString }
+        },
+        resolve (root, args) {
+          return Db.models.requests.findAll({ where: args });
+        }
+      },
+
+
+
+
 
     };
   }
@@ -671,12 +686,21 @@ const Mutation = new GraphQLObjectType({
     deleteUser: {
       type: User,
       args: {
-        id: {
-          type: new GraphQLNonNull(GraphQLInt)
-        }
+        id: { type: new GraphQLNonNull(GraphQLInt) }
       },
       resolve(_, args) {
         return Db.models.users.destroy({ where: args});
+      }
+    },
+
+    deleteTeamJoin: {
+      type: Request,
+      args: {
+        projectId: { type: new GraphQLNonNull(GraphQLString) },
+        receiverUserId: { type: new GraphQLNonNull(GraphQLString)  }
+      },
+      resolve(_, args) {
+        return Db.models.requests.destroy({ where: args});
       }
     },
 

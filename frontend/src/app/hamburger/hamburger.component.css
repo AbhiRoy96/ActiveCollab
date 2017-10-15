@@ -1,0 +1,56 @@
+.hamburger-parent{
+	padding: 0;	
+}
+
+.welcome-note{
+	padding-top: 20px;
+	text-align: center;
+	font-size: 1.3rem;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 300;
+	color:#B388FF;
+}
+
+
+.navigation{
+	position: relative;
+	height: 100%;
+}
+
+.navigation li {
+	list-style: none;
+}
+
+.navigation a {
+	color: #2196F3;
+	font-weight: 400;
+	letter-spacing: .2em;
+	text-decoration: none;
+	display: block;
+	padding: 10px 0 10px 20px;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+}
+
+.navigation a:hover {
+	background: rgba(118,166,174,1.00);
+}
+
+.navigation ul ul {
+	position: absolute;
+	visibility: hidden;
+}
+
+.navigation ul li.tap ul {
+	display: block;
+}
+
+.navigation ul ul a:before {
+	content: '\203A';
+	margin-right: 20px;
+}
+
+.navigation ul li:hover > ul {
+	position: relative;
+	visibility: visible;
+}

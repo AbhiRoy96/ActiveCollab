@@ -44,6 +44,42 @@ export class HttpWebApiService {
   }
 
 
+  createNewTeam(teamid,username,projectid,doj){
+    const newUser = "http://localhost:4000/graphql?query=mutation { createTeam(teamId: \""+teamid+"\", userId: \""+username+"\", projectId: \""+projectid+"\", joiningDate: \""+doj+"\") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+
+  myTeams(userid){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query={teamDetails(userId: \"'+userid+'\"){teamId projectId joiningDate} }')
+      .map((res:Response) => res.json());
+
+     return teamData;
+  }
+
+
+  validateTeamRegistration(teamid){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query={teamDetails(teamId: \"'+teamid+'\"){teamId} }')
+      .map((res:Response) => res.json());
+
+     return teamData;
+  }
+
+
+  sendRequest(sender, receiver, projectId, status){
+    const newUser = "http://localhost:4000/graphql?query=mutation { createRequest(senderUserId: \""+sender+"\", receiverUserId: \""+receiver+"\", projectId: \""+projectId+"\", status: \""+status+"\") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+
 }
 
 

@@ -1,3 +1,44 @@
-<p>
-  create-team works!
-</p>
+<div id="message" class="alert alert-success" role="alert">
+  <strong>{{action}}</strong> {{details}}
+</div>
+
+<div class="flex-parent">
+	<form>
+	<!-- Sign Up Form Starts Here -->	
+		
+		<div class="flex-container">
+			
+			<div class="flex-item">
+
+				<!-- Flex Item -->
+			    <h2>Create New Team</h2>
+			    <br>
+
+			    <div class="form-group">
+				    <label for="teamid">Team Id</label>
+				    <input type="text" id="teamid" name="teamid" [(ngModel)]="teamid" class="form-control csp" placeholder="Team Handle" >
+				</div>
+				<div class="form-group">
+					<label for="InputEmail">User Email</label>
+				    <input type="email" id="username" name="username" [(ngModel)]="username" class="form-control csp" aria-describedby="emailHelp" placeholder="Enter email">
+				    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				</div>
+			    <div class="form-group">
+				    <label for="projectid">Project Id</label>
+				    <input type="text" id="projectid" name="projectid" [(ngModel)]="projectid" class="form-control csp" placeholder="Project Handle" >
+				</div>
+				<div class="form-group">
+				    <label for="doj">Date of Joining</label>
+				    <input type="text" id="doj" name="doj" [(ngModel)]="doj" class="form-control csp" placeholder="Please enter date in this format YYYY-MM-DDTHH:MM:SS.SSSSZ" >
+				</div>
+
+			   
+			<!-- Flex Item -->
+
+				<br>
+				<button type="button" class="btn btn-primary" (click)='validateSignUp()' > Create Team </button>
+			</div>
+		</div>
+	<!-- Sign Up Form Ends Here -->
+	</form>
+</div>

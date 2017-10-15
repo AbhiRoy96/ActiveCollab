@@ -1,7 +1,25 @@
-<p>
-  admin-dashboard works!
+<nav class="navbar fixed-top justify-content-between">
+  <a class="navbar-brand" href="#">
+    <img src="../../assets/bluebox_logo.png" width="30" height="30" class="d-inline-block align-top" alt="bluebox-logo">
+    <font color="indigo"><strong>BlueBox</strong></font> Project Management Systems
+  </a>
 
-  <button type="button" class="btn btn-primary" (click)='logout()' >Sign Out</button>
 
-  <router-outlet></router-outlet>
-</p>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Hello {{user}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="right: 0; left: auto;">
+          <a class="dropdown-item" href="#">View Profile</a>
+          <a class="dropdown-item" href="#">Change Profile Settings</a>
+          <a class="dropdown-item" (click)='logout()' >Sign Out</a>
+        </div>
+      </li>
+</nav>
+<div class="dashboard-content">
+	<div class="row">
+	    <div class="col-3 nav-panel"><hamburger></hamburger></div>
+	    <div class="col-9 route-content"><router-outlet></router-outlet></div>
+  	</div>
+</div>
+

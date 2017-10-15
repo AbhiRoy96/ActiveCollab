@@ -6,7 +6,7 @@ import _ from 'lodash';
 const Conn = new Sequelize(
   'collabPro',
   'root',
-  'password',
+  'soujonno#*',
   {
     dialect: 'mysql',
     host: 'localhost'

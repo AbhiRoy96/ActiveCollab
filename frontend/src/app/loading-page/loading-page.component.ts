@@ -11,21 +11,31 @@ import { Observable } from 'rxjs/Rx';
 })
 export class LoadingPageComponent implements OnInit {
 
+  public actStatus: boolean;
+  errors:any;
   constructor(private authService: UserAuthService,private _httpWebService:HttpWebApiService, private router: Router) {}
 
   ngOnInit() {
-  	this._httpWebService.verifyDualLogin(window.localStorage.getItem('user'))
-        .subscribe(resp => {
-          const userData = resp;
-          	window.sessionStorage.setItem('usertype', userData.data.signInAuth[0].userType);
-          });
-    
-    window.localStorage.removeItem('valid');
+  	window.localStorage.removeItem('valid');
     window.localStorage.setItem('valid', 'checking');
+    document.getElementById("old").innerHTML = "Loading user ...";
     document.getElementById('but').style.visibility = 'hidden';
-   	document.getElementById("old").innerHTML = "Loading user ...";
 
-    this.runanimate();
+    this._httpWebService.verifyDualLogin(window.localStorage.getItem('user'))
+      .subscribe(resp => {
+        const userData = resp;
+          window.sessionStorage.setItem('usertype', userData.data.signInAuth[0].userType);
+          this.runanimate();
+        },
+      error => {
+        this.errors = error;
+        window.localStorage.removeItem('valid');
+        window.localStorage.setItem('valid', 'true');
+        this.router.navigate(['forbidden']); 
+      });
+      
+        
+        
   }
 
   runanimate(){
@@ -44,12 +54,14 @@ export class LoadingPageComponent implements OnInit {
             elem.style.width = width + '%';
         }
     }
-
   }
 
-  onboard(){
-  	this.router.navigate(['']);  	
+
+  redirect(){
+    this.router.navigate(['']);
   }
+
+
 
 
 }

@@ -72,6 +72,7 @@ import { UserAuthService } from './user-auth.service';
 import { AuthGuard } from './auth.guard';
 import { AdminAuthGuard } from './admin-auth.guard';
 import { PasswordGuard } from './password.guard';
+import { HamburgerComponent } from './hamburger/hamburger.component';
 
 
 
@@ -107,6 +108,14 @@ const appRoutes:Routes = [
        {
          path: '',
          component: ProfileViewComponent
+       },
+       {
+         path: 'createteam',
+         component: CreateTeamComponent
+       },
+       {
+         path: 'myteams',
+         component: ViewTeamComponent
        },
 
      ]
@@ -161,6 +170,7 @@ const appRoutes:Routes = [
     ResRequestComponent,
     MainPageComponent,
     LoadingPageComponent,
+    HamburgerComponent,
 
   ],
   imports: [
