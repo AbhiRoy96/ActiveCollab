@@ -50,12 +50,6 @@ import { ViewTodoComponent } from './dashboard-components/view-todo/view-todo.co
 import { CreateTodoComponent } from './dashboard-components/create-todo/create-todo.component';
 import { ResTodoComponent } from './dashboard-components/res-todo/res-todo.component';
 
-import { CreateTimelineComponent } from './dashboard-components/create-timeline/create-timeline.component';
-import { ViewTielineComponent } from './dashboard-components/view-tieline/view-tieline.component';
-import { ViewsSlotComponent } from './dashboard-components/views-slot/views-slot.component';
-import { CreateSlotComponent } from './dashboard-components/create-slot/create-slot.component';
-import { UpdateSlotComponent } from './dashboard-components/update-slot/update-slot.component';
-
 import { NewsFeedsComponent } from './dashboard-components/news-feeds/news-feeds.component';
 
 import { ResRequestComponent } from './dashboard-components/res-request/res-request.component';
@@ -121,7 +115,15 @@ const appRoutes:Routes = [
          path: 'newsfeeds',
          component: NewsFeedsComponent
        },
-
+       {
+         path: 'newproject',
+         component: CreateProjectsComponent
+       },
+       {
+         path: 'myprojects',
+         component: ViewProjectsComponent
+       },
+       
      ]
   },
 
@@ -161,11 +163,6 @@ const appRoutes:Routes = [
     ViewTodoComponent,
     CreateTodoComponent,
     ResTodoComponent,
-    CreateTimelineComponent,
-    ViewTielineComponent,
-    ViewsSlotComponent,
-    CreateSlotComponent,
-    UpdateSlotComponent,
     NewsFeedsComponent,
     ResRequestComponent,
     MainPageComponent,

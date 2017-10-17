@@ -55,13 +55,13 @@ export class ResRequestComponent implements OnInit {
     this.body = this.userid + " Joined team" + item.projectId;
     this._httpWebService.updateRequest(item.id, "accepted");
     this._httpWebService.createNews(this.userid,item.projectId,this.formattedDate,"Team Joining", this.body);
-    this.ngOnInit();
+    document.getElementById("notify_"+item.id).classList.add("notification-seen");
   }
 
   rejectRequest(item){
     this._httpWebService.updateRequest(item.id, "rejected");
     //deleteTeamRequest(item.teamId, , item.projectId)
-    this.ngOnInit();
+    document.getElementById("notify_"+item.id).classList.add("notification-seen");
   }
 
 

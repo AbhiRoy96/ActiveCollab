@@ -109,3 +109,9 @@ ul{
 	font-weight: 400;
 	color: white;
 }
+
+
+.notification-seen{
+	position: absolute;
+	visibility: hidden;	
+}

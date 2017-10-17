@@ -15,8 +15,8 @@ export class HttpWebApiService {
   	return this._Http.get('http://localhost:4000/graphql?query={signInAuth(email: \"'+ username +'\", password: \"'+ password +'\"){ email password firstName userType} }')
   		.map((res:Response) => res.json());
 
-
   }
+
 
   createNewUser(userId, email, password, firstName, lastName, dob, phoneNumber, company, department, userType, address, city, state, country, zip){
 
@@ -98,6 +98,7 @@ export class HttpWebApiService {
 
   }
 
+
   createNews(sender, projectid, timest, title, body){
     const newUser = "http://localhost:4000/graphql?query=mutation{createFeed(senderUserId: \""+sender+"\", projectId: \""+projectid+"\", sTimestamp: \""+timest+"\", title: \""+title+"\", body: \""+body+"\", status: \"unread\") { id } }";
     const reqBody = "";
@@ -106,6 +107,7 @@ export class HttpWebApiService {
     const req = this._Http.post(newUser, reqBody);
     req.subscribe();
   }
+
 
   updateFeeds(id){
     const newUser = "http://localhost:4000/graphql?query=mutation{feedsResponse(id:"+id+", status: \"read\") { id } }";
@@ -118,12 +120,11 @@ export class HttpWebApiService {
 
 
   newsFeeds(projectid){
-    const teamData = this._Http.get('http://localhost:4000/graphql?query={newsFeeds(projectId: \"'+projectid+'\" status: \"unread\"){senderUserId projectId sTimestamp title body} }')
+    const teamData = this._Http.get('http://localhost:4000/graphql?query={newsFeeds(projectId: \"'+projectid+'\" status: \"unread\"){id senderUserId projectId sTimestamp title body} }')
       .map((res:Response) => res.json());
 
      return teamData;
   }
-
 
 
   myProjects(userid){
@@ -142,6 +143,41 @@ export class HttpWebApiService {
     const req = this._Http.post(newUser, reqBody);
     req.subscribe();
   }
+
+
+  userInfo(username){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query={profile(email: \"'+username+'\"){id email firstName lastName dob phoneNumber company department userType address city state country zip } }')
+      .map((res:Response) => res.json());
+
+     return teamData;
+  }
+
+
+  newProject(projectId, name, description, company, budget, manager, startDate, endDate, status){
+    const newUser = "http://localhost:4000/graphql?query=mutation{ createProject(projectId: \""+projectId+"\", name: \""+name+"\", description: \""+description+"\", company: \""+company+"\", budget: "+budget+", manager: \""+manager+"\", startDate: \""+startDate+"\", endDate: \""+endDate+"\", status: \""+status+"\", percentCompletion: 0.0) { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+  validateProject(projectId){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query=query{ projectDetails(projectId: \"'+projectId+'\"){ projectId } }')
+      .map((res:Response) => res.json());
+
+     return teamData;
+  }
+
+
+  projectInfo(projectId){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query=query{ projectDetails(projectId: \"'+projectId+'\"){id projectId name description company budget manager startDate endDate status percentCompletion } }')
+      .map((res:Response) => res.json());
+
+     return teamData;  
+  }
+
+  
 
 
 }

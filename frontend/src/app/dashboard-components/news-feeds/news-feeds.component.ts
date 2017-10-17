@@ -55,9 +55,9 @@ export class NewsFeedsComponent implements OnInit {
     			}
     			
     			if(this.projectList.length == 0){
-            		//document.getElementById("message").classList.add("mess");
-    				//document.getElementById('requ').style.visibility = 'hidden';
-    				//document.getElementById('message').style.visibility = 'visible';
+            		document.getElementById("message").classList.add("mess");
+    				    document.getElementById('requ').style.visibility = 'hidden';
+    				    document.getElementById('message').style.visibility = 'visible';
     			}
 
 
@@ -68,6 +68,15 @@ export class NewsFeedsComponent implements OnInit {
         });
 
   }
+
+
+  acceptRequest(item){
+
+    this._httpWebService.updateFeeds(item.id);
+    document.getElementById("notify_"+item.id).classList.add("notification-seen");
+   
+  }
+
 
 
 }
