@@ -1,3 +1,38 @@
-<p>
-  close-bug-tickit works!
-</p>
+<div class="request-body">
+<h1 class="display-3"> Verify Bug Submission Reports </h1>
+
+<p id="message" class="mess"> Your projects do not have any bug submissions yet! </p> 
+	<div id="requ" class="all-requests">
+		<ul class="team">
+			<li *ngFor="let item of testarr"> 
+
+
+				<div id="notify_{{item.id}}" class="card" style="width: 50rem;">
+				  <div class="card-body">
+				    <h4 class="card-title">Bug: {{item.title}}</h4>
+				    <p class="card-text"><strong>{{item.bookedBy}}</strong>   at {{item.bookedOn}}</p>
+				  </div>
+				  <ul class="list-group list-group-flush">
+				  	<li class="list-group-item"><strong>@{{item.projectId}} </strong>{{item.description}}</li>
+				    <li class="list-group-item"><strong>Department: </strong>{{item.department}}</li>
+				    <li class="list-group-item"><strong>Priority: </strong>{{item.type}}</li>
+				    <li class="list-group-item"><strong>Status: </strong>{{item.status}}</li>
+				    <li class="list-group-item">
+				    	<button type="button" class="btn btn-primary btn-lg" (click)="acceptRequest(item)"> Verify </button>
+				    </li>
+				  </ul>
+				</div>
+
+				<br><br>
+
+
+
+			</li>
+		</ul>
+
+
+
+
+
+	</div>
+</div>

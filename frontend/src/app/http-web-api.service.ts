@@ -177,7 +177,131 @@ export class HttpWebApiService {
      return teamData;  
   }
 
+
+  updateProject(pid, projectId, name, description, company, budget, manager, startDate, endDate){
+    const newUser = "http://localhost:4000/graphql?query=mutation{ updateProjectSettings(id: "+pid+", projectId: \""+projectId+"\" name: \""+name+"\" description: \""+description+"\" company: \""+company+"\" budget: "+budget+" manager: \""+manager+"\" startDate: \""+startDate+"\" endDate: \""+endDate+"\") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+
+  updateProjectStatus(pid, projectId, status){
+    const newUser = "http://localhost:4000/graphql?query=mutation{ updateProjectStatus(id: "+pid+", projectId: \""+projectId+"\" status: \""+status+"\") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();  
+  }
+
+
+  updateProjectCompl(pid, projectId, completion){
+    const newUser = "http://localhost:4000/graphql?query=mutation{ updateProjectCompletion(id: "+pid+", projectId: \""+projectId+"\" percentCompletion: "+completion+") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+
+  newTask(projectId,title,description,department,createdBy,createDate,broadcastTo,deadline){
+    const newUser = "http://localhost:4000/graphql?query=mutation{createTodo(projectId: \""+projectId+"\", title: \""+title+"\", description: \""+description+"\", department: \""+department+"\", createdBy: \""+createdBy+"\", createDate: \""+createDate+"\", broadcastTo: \""+broadcastTo+"\", deadline: \""+deadline+"\", status: \"Pending\", resolvedBy: \"Pending\", resolvedOn: \""+deadline+"\"){ id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+  todoInfo(projectId, broadCast){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query=query{getTodos(projectId: "'+projectId+'" broadcastTo: "'+broadCast+'"){id projectId title description department deadline createdBy createDate status} }')
+      .map((res:Response) => res.json());
+
+     return teamData;  
+  } 
   
+
+  pendingtodo(projectId, broadCast){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query=query{getTodos(projectId: "'+projectId+'" broadcastTo: "'+broadCast+'" status: "pending"){id projectId title description department deadline createdBy createDate status } }')
+      .map((res:Response) => res.json());
+
+     return teamData;  
+  }
+
+
+  updateTodos(todoid, userid, resdate){
+    const newUser = "http://localhost:4000/graphql?query=mutation{todoResponse(id: "+todoid+", status: \"resolved\", resolvedBy: \""+userid+"\", resolvedOn: \""+resdate+"\"){ id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+  newBug(title, description, department, projectId, rtype, bookedBy, bookedOn){
+    const newUser = "http://localhost:4000/graphql?query=mutation{createTickit(title: \""+title+"\",description: \""+description+"\",department: \""+department+"\",projectId: \""+projectId+"\",type: \""+rtype+"\",status: \"pending\",bookedBy: \""+bookedBy+"\",bookedOn: \""+bookedOn+"\",resolvedBy: \"pending\",verificationStatus:\"pending\",verifiedBy: \"pending\",verifiedOn: \""+bookedOn+"\") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+
+  respondtoBugs(id,resolvedBy){
+    const newUser = "http://localhost:4000/graphql?query=mutation{tickitResponse(id: "+id+", status: \"waiting\", resolvedBy: \""+resolvedBy+"\", verificationStatus: \"booked\") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+
+  closeBugReport(id,verifiedBy,verifiedOn){
+    const newUser = "http://localhost:4000/graphql?query=mutation{tickitClose(id: "+id+", status: \"resolved\" verificationStatus: \"verified\" verifiedBy: \""+verifiedBy+"\" verifiedOn: \""+verifiedOn+"\") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+
+  viewBug(projectId){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query=query{getTickits(projectId: "'+projectId+'"){ id title description department projectId type bookedBy bookedOn status} }')
+      .map((res:Response) => res.json());
+
+     return teamData; 
+  }
+
+  viewPendingBug(projectId){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query=query{getTickits(projectId: "'+projectId+'", status: "pending"){ id title description department projectId type bookedBy bookedOn status} }')
+      .map((res:Response) => res.json());
+
+     return teamData;
+  }
+
+  verifyBug(projectId){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query=query{getTickits(projectId: "'+projectId+'", verificationStatus: "booked"){id title description department projectId type bookedBy bookedOn status} }')
+      .map((res:Response) => res.json());
+
+     return teamData; 
+  }
+
+
+  updateProfile(id, email, firstName, lastName, dob, phoneNumber, company, department, address, city, state, country, zip){
+    const newUser = "http://localhost:4000/graphql?query=mutation{profileUpdate(id:"+id+" ,email: \""+email+"\", firstName: \""+firstName+"\", lastName: \""+lastName+"\", dob: \""+dob+"\", phoneNumber: \""+phoneNumber+"\", company: \""+company+"\", department: \""+department+"\",  address: \""+address+"\", city: \""+city+"\", state: \""+state+"\", country: \""+country+"\", zip: \""+zip+"\") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
 
 
 }

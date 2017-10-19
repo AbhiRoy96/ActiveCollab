@@ -1,3 +1,50 @@
-<p>
-  create-bug-tickit works!
-</p>
+<div id="message" class="alert alert-success" role="alert">
+  <strong>{{action}}</strong> {{details}}
+</div>
+
+<div class="flex-parent">
+	<form>
+	<!-- Sign Up Form Starts Here -->	
+		
+		<div class="flex-container">
+			
+			<div class="flex-item">
+
+				<!-- Flex Item -->
+			    <h2>Create Bug Report</h2>
+			    <br>
+
+			    <div class="form-group">
+				    <label for="tname">Title</label>
+				    <input type="text" id="tname" name="tname" [(ngModel)]="tname" class="form-control csp" placeholder="Title" >
+				</div>
+				<div class="form-group">
+				    <label for="description">Bug Description</label>
+				    <input type="text" id="description" name="description" [(ngModel)]="description" class="form-control csp" placeholder="Versions, Builds, Details" >
+				</div>
+				<div class="form-group">
+				    <label for="dept">Department</label>
+				    <input type="text" id="dept" name="dept" [(ngModel)]="dept" class="form-control csp" placeholder="Frontend, Backend, DevOps" >
+				</div>
+				<div class="form-group">
+				    <label for="projectid">Project Id</label>
+				    <input type="text" id="projectid" name="projectid" [(ngModel)]="projectid" class="form-control csp" placeholder="Project Handle" >
+				</div>
+				<div class="form-group">
+				    <label for="deadline">Deadline</label>
+				    <input type="text" id="deadline" name="deadline" [(ngModel)]="deadline" class="form-control csp" placeholder="Please enter date in this format YYYY-MM-DDTHH:MM:SS.SSSSZ" >
+				</div><div class="form-group">
+				    <label for="prior">Priority</label>
+				    <input type="text" id="prior" name="prior" [(ngModel)]="prior" class="form-control csp" placeholder="High, medium, low" >
+				</div>
+		
+
+			<!-- Flex Item -->
+
+				<br>
+				<button type="button" class="btn btn-primary" (click)='validateSignUp()' > Create </button>
+			</div>
+		</div>
+	<!-- Sign Up Form Ends Here -->
+	</form>
+</div>

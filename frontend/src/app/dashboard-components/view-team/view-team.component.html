@@ -7,7 +7,7 @@
 			<li *ngFor="let item of testarr"> 
 
 
-				<div class="card" style="width: 35rem;">
+				<div class="card" style="width: 45rem;">
 				  <img class="card-img-top" src="../../../assets/card-background.jpg" alt="Card image cap">
 				  <div class="card-body">
 				    <h4 class="card-title">Team Details</h4>
@@ -17,6 +17,10 @@
 				    <li class="list-group-item"><strong>Team Handle: </strong>{{item.teamId}}</li>
 				    <li class="list-group-item"><strong>Project Handle: </strong>{{item.projectId}}</li>
 				    <li class="list-group-item"><strong>Joined Since: </strong>{{item.joiningDate}}</li>
+				    <li class="list-group-item">
+				    	<button type="button" class="btn btn-primary btn-lg" (click)="settingRequest(item)">Add Team Members</button>
+				    	<button type="button" class="btn btn-primary btn-lg" (click)="updateRequest(item)">Quit Team</button>
+				    </li>
 				  </ul>
 				</div>
 

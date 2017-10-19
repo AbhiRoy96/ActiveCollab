@@ -814,9 +814,7 @@ const Mutation = new GraphQLObjectType({
         type: User,
         args: {
             id: { type: new GraphQLNonNull(GraphQLInt) },
-            userId: { type: GraphQLString },
             email: { type: GraphQLString },
-            password: { type: GraphQLString },
             firstName: { type: GraphQLString },
             lastName: { type: GraphQLString },
             dob: { type: GraphQLDate },
@@ -831,7 +829,6 @@ const Mutation = new GraphQLObjectType({
           },
           resolve (_, args) {
             return Db.models.users.update({
-              email: args.email,
               firstName: args.firstName,
               lastName: args.lastName,
               dob: args.dob,
@@ -843,7 +840,7 @@ const Mutation = new GraphQLObjectType({
               state: args.state,
               country: args.country,
               zip: args.zip
-            },{where: { userId: args.userId, password: args.password }});
+            },{where: { email: args.email }});
           }
         },
 

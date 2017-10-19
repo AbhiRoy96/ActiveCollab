@@ -24,7 +24,8 @@
 				    <li class="list-group-item"><strong>Project Deadline: </strong>{{item.endDate}}</li>
 				    <li class="list-group-item"><strong>Status: </strong>{{item.status}}</li>
 				    <li class="list-group-item">
-				    	<button type="button" class="btn btn-primary btn-lg" (click)="acceptRequest(item)">Seen</button>
+				    	<button type="button" class="btn btn-primary btn-lg" (click)="settingRequest(item)">Update Project Settings</button>
+				    	<button type="button" class="btn btn-primary btn-lg" (click)="updateRequest(item)">Update Project Status</button>
 				    </li>
 
 				  </ul>

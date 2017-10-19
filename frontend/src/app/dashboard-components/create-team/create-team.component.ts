@@ -28,7 +28,6 @@ validate = true;
   	validateSignUp(){
 
   		this.validate = true;
-  		console.log("fired");
 
   		document.getElementById("username").classList.remove("invalid-input");
   		document.getElementById("teamid").classList.remove("invalid-input");

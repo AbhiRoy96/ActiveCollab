@@ -14,15 +14,31 @@ p{
 	color: black;
 }
 
+
+.btn-primary:hover{
+	cursor: pointer;
+	border: 1px solid #C62828;
+	background-color: #C62828;
+}
+
+.btn-secondary:hover{
+	cursor: pointer;
+}
+
+
+.btn-primary{
+	border: 1px solid #E53935;
+	background-color: #E53935;
+}
+
+
 .team-view{
 	position: absolute;
 	width: 100%;
 	background-color: #d3d9df;
 }
 
-.btn-primary:hover{
-	background-color: #101115;
-}
+
 
 
 .flex-container{
@@ -61,7 +77,7 @@ p{
 
 .card-orient{
 	padding:0;
-	padding-left: 190px;
+	padding-left: 110px;
 	
 
 }
@@ -82,4 +98,14 @@ ul{
 	font-size: 1.5rem;
 	font-weight: 300;
 	color: #2196F3;
+}
+
+.card-body{
+	background-color: #E53935;
+	color: white;
+}
+
+.card-body p {
+	font-weight: 400;
+	color: white;
 }

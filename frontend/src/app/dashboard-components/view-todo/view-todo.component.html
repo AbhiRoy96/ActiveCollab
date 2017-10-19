@@ -1,3 +1,35 @@
-<p>
-  view-todo works!
-</p>
+<div class="request-body">
+<h1 class="display-3"> To-Dos </h1>
+
+<p id="message" class="mess"> You do not have any todos! </p> 
+	<div id="requ" class="all-requests">
+		<ul class="team">
+			<li *ngFor="let item of testarr"> 
+
+
+				<div id="notify_{{item.id}}" class="card" style="width: 50rem;">
+				  <div class="card-body">
+				    <h4 class="card-title">To-Do: {{item.title}}</h4>
+				    <p class="card-text"><strong>{{item.createdBy}}</strong>   at {{item.createDate}}</p>
+				  </div>
+				  <ul class="list-group list-group-flush">
+				  	<li class="list-group-item"><strong>@{{item.projectId}} </strong>{{item.description}}</li>
+				    <li class="list-group-item"><strong>Department: </strong>{{item.department}}</li>
+				    <li class="list-group-item"><strong>Deadline: </strong>{{item.deadline}}</li>
+				    <li class="list-group-item"><strong>Status: </strong>{{item.status}}</li>
+				  </ul>
+				</div>
+
+				<br><br>
+
+
+
+			</li>
+		</ul>
+
+
+
+
+
+	</div>
+</div>

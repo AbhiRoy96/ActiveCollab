@@ -34,7 +34,6 @@ validate = true;
   	validateSignUp(){
 
   		this.validate = true;
-  		console.log("fired");
 
   		document.getElementById("projectid").classList.remove("invalid-input");
   		document.getElementById("projectname").classList.remove("invalid-input");

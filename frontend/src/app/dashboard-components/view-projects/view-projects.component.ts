@@ -44,7 +44,7 @@ export class ViewProjectsComponent implements OnInit {
     							this.testarr.push(feeds.data.projectDetails[i]);
     						}
 							
-							console.log(this.testarr);
+							
     					},
 				    		error => {
 				            this.errors = error;
@@ -69,12 +69,15 @@ export class ViewProjectsComponent implements OnInit {
   }
 
 
-  acceptRequest(item){
-
-    //this._httpWebService.updateFeeds(item.id);
-    //document.getElementById("notify_"+item.id).classList.add("notification-seen")
-     this.router.navigate(['/cpanel/timeline', item.projectId]);
+  settingRequest(item){
+     this.router.navigate(['/cpanel/changesettings', item.projectId]);
   }
+
+
+  updateRequest(item){
+     this.router.navigate(['/cpanel/updatestatus', item.projectId]);
+  }
+
 
 
 

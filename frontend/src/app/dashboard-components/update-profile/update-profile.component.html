@@ -1,3 +1,95 @@
-<p>
-  update-profile works!
-</p>
+<div id="message" class="alert alert-success" role="alert">
+  <strong>{{action}}</strong> {{details}}
+</div>
+
+<div class="flex-parent">
+	<form>
+	<!-- Sign Up Form Starts Here -->	
+		<h2>Update Profile Settings</h2>
+		<br><br>
+		<div class="flex-container">
+			
+			
+			<div class="flex-item">
+
+				<!-- Flex Item -->
+			    <h2>User Account Details</h2>
+			    <br>
+
+				<div class="form-group">
+					<label for="InputEmail">Email address</label>
+				    <input type="email" id="username" name="username" [(ngModel)]="username" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" disabled="true">
+				    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				</div>
+			    <br><br><br><br>
+			    <br><br><br><br>
+
+			    <h2>Commercial Details</h2>
+			    <br>
+				<div class="form-group">
+				    <label for="usertype">Service</label>
+				    <input type="text" id="usertype" name="usertype" [(ngModel)]="usertype" class="form-control" placeholder="User Type(Project Manager, Frontend Developer, etc)" disabled="true">
+				</div>
+				<div class="form-group">
+				    <label for="department">Department</label>
+				    <input type="text" id="department" name="department" [(ngModel)]="department" class="form-control" placeholder="Department">
+				</div>
+				<div class="form-group">    
+				    <label for="company">Company</label>
+				    <input type="text" id="company" name="company" [(ngModel)]="company" class="form-control" placeholder="Company Name" disabled="true">
+				</div>
+			</div>
+			<!-- Flex Item -->
+			<div class="flex-item">
+				<h2>Personal Details</h2>
+				<br>
+
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+				    <input type="text" id="firstname" name="firstname" [(ngModel)]="firstname" class="form-control" placeholder="First Name">
+				</div>
+				<div class="form-group">
+				    <label for="lastName">Last Name</label>
+				    <input type="text" id="lastname" name="lastname" [(ngModel)]="lastname" class="form-control" placeholder="Last Name">
+				</div>
+				<div class="form-group">
+				    <label for="dob">Date Of Birth</label>
+				    <input type="text" id="dob" name="dob" [(ngModel)]="dob" class="form-control" placeholder="Please enter date in this format YYYY-MM-DDTHH:MM:SS.SSSSZ">
+				</div>
+				<div class="form-group">
+				    <label for="phone">Phone Number</label>
+				    <input type="text" id="phone" name="phone" [(ngModel)]="phone" class="form-control" placeholder="Phone Number">
+				</div>
+				<div class="form-group">
+				    <label for="address">Address Line 1</label>
+				    <input type="text" id="address" name="address" [(ngModel)]="address" class="form-control" placeholder="Address Line 1">
+				</div>
+				<div class="form-group">    
+				    <label for="city">City</label>
+				    <input type="text" id="city" name="city" [(ngModel)]="city" class="form-control" placeholder="City">
+				</div>
+				<div class="form-group">
+				    <label for="state">State</label>
+				    <input type="text" id="state" name="state" [(ngModel)]="state" class="form-control" placeholder="State">
+				</div>
+				<div class="form-group">
+				    <label for="country">Phone Number</label>
+				    <input type="text" id="country" name="country" [(ngModel)]="country" class="form-control" placeholder="Country">
+				</div>
+				<div class="form-group">
+					<label for="zip">PIN/ZIP Code</label>
+				    <input type="text" id="zip" name="zip" [(ngModel)]="zip" class="form-control" placeholder="PIN/ZIP Code">
+				</div>	  
+			</div>
+			<!-- Flex Item -->
+			
+
+		</div>
+
+			   
+	<!-- Form ends here -->
+		<br>
+		<button type="button" class="btn btn-primary" (click)='validateSignUp()' > Update Settings </button>
+	<!-- Sign Up Form Ends Here -->
+	</form>
+</div>

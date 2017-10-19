@@ -26,6 +26,7 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
 
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { HamburgerComponent } from './hamburger/hamburger.component';
 
 // Dashboard components
 
@@ -62,7 +63,7 @@ import { UserAuthService } from './user-auth.service';
 import { AuthGuard } from './auth.guard';
 import { AdminAuthGuard } from './admin-auth.guard';
 import { PasswordGuard } from './password.guard';
-import { HamburgerComponent } from './hamburger/hamburger.component';
+
 
 
 
@@ -97,6 +98,10 @@ const appRoutes:Routes = [
      children: [
        {
          path: '',
+         component: MainPageComponent
+       },
+       {
+         path: 'profile',
          component: ProfileViewComponent
        },
        {
@@ -123,6 +128,49 @@ const appRoutes:Routes = [
          path: 'myprojects',
          component: ViewProjectsComponent
        },
+       {
+         path: 'changesettings/:id',
+         component: UpdateProjectSettComponent
+       },
+       {
+         path: 'updatestatus/:id',
+         component: UpdateProjectStatusComponent
+       },
+       {
+         path: 'createtodo',
+         component: CreateTodoComponent
+       },
+       {
+         path: 'mytodos',
+         component: ViewTodoComponent
+       },
+       {
+         path: 'pendingtodos',
+         component: ResTodoComponent
+       },
+       {
+         path: 'newbugreport',
+         component: CreateBugTickitComponent
+       },
+       {
+         path: 'bugs',
+         component: ViewBugTickitComponent
+       },
+       {
+         path: 'bugsolved',
+         component: ResBugTickitComponent
+       },
+       {
+         path: 'verifybugs',
+         component: CloseBugTickitComponent
+       },
+       {
+         path: 'accountsettings',
+         component: UpdateProfileComponent
+       },
+
+
+       
        
      ]
   },
