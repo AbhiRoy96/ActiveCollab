@@ -1,0 +1,42 @@
+<div class="request-body">
+<h1 class="display-3"> My Projects </h1>
+
+<p id="message" class="mess"> You do not have any projects to monitor! </p> 
+	<div id="requ" class="all-requests">
+		<ul class="team">
+			<li *ngFor="let item of testarr"> 
+
+
+				<div id="notify_{{item.id}}" class="card" style="width: 50rem;">
+				<img class="card-img-top" src="../../../assets/card-background.jpg" alt="Card image cap">
+				  <div class="card-body">
+				    <h4 class="card-title">{{item.projectId}}</h4>
+				    <p class="card-text">{{item.description}}</p>
+				  </div>
+				  <ul class="list-group list-group-flush">
+				  	
+				    <li class="list-group-item"><strong>Project Name: </strong>{{item.name}}</li>
+				    <li class="list-group-item"><strong>Budget: </strong>${{item.budget}}</li>
+				    <li class="list-group-item"><strong>Project Manager: </strong>{{item.manager}}</li>
+				    <li class="list-group-item"><strong>Developers: </strong>{{item.company}}</li>
+
+				    <li class="list-group-item"><strong>Project Opening: </strong>{{item.startDate}}</li>
+				    <li class="list-group-item"><strong>Project Deadline: </strong>{{item.endDate}}</li>
+				    <li class="list-group-item"><strong>Status: </strong>{{item.status}}</li>
+
+				  </ul>
+				</div>
+
+				<br><br>
+
+
+
+			</li>
+		</ul>
+
+
+
+
+
+	</div>
+</div>

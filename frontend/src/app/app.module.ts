@@ -37,6 +37,7 @@ import { ViewProjectsComponent } from './dashboard-components/view-projects/view
 import { UpdateProjectSettComponent } from './dashboard-components/update-project-sett/update-project-sett.component';
 import { UpdateProjectStatusComponent } from './dashboard-components/update-project-status/update-project-status.component';
 import { ProjectCompletionComponent } from './dashboard-components/project-completion/project-completion.component';
+import { UserprojectsComponent } from './dashboard-components/userprojects/userprojects.component';
 
 import { ProfileViewComponent } from './dashboard-components/profile-view/profile-view.component';
 import { UpdateProfileComponent } from './dashboard-components/update-profile/update-profile.component';
@@ -44,6 +45,7 @@ import { UpdateProfileComponent } from './dashboard-components/update-profile/up
 import { CreateTeamComponent } from './dashboard-components/create-team/create-team.component';
 import { ViewTeamComponent } from './dashboard-components/view-team/view-team.component';
 import { TeammembersComponent } from './dashboard-components/teammembers/teammembers.component'; 
+import { UserTeamsComponent } from './dashboard-components/user-teams/user-teams.component';
 
 import { ViewBugTickitComponent } from './dashboard-components/view-bug-tickit/view-bug-tickit.component';
 import { CreateBugTickitComponent } from './dashboard-components/create-bug-tickit/create-bug-tickit.component';
@@ -66,6 +68,8 @@ import { UserAuthService } from './user-auth.service';
 import { AuthGuard } from './auth.guard';
 import { AdminAuthGuard } from './admin-auth.guard';
 import { PasswordGuard } from './password.guard';
+
+
 
 
 
@@ -102,7 +106,7 @@ const appRoutes:Routes = [
        },
        {
          path: 'myteams',
-         component: ViewTeamComponent
+         component: UserTeamsComponent
        },
        {
          path: 'myteamrequests',
@@ -114,7 +118,7 @@ const appRoutes:Routes = [
        },
        {
          path: 'myprojects',
-         component: ViewProjectsComponent
+         component: UserprojectsComponent
        }, 
        {
          path: 'createtodo',
@@ -277,6 +281,8 @@ const appRoutes:Routes = [
     HamburgerComponent,
     UserHamburgerComponent,
     TeammembersComponent,
+    UserprojectsComponent,
+    UserTeamsComponent,
 
   ],
   imports: [

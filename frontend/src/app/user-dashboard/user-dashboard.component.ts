@@ -36,6 +36,7 @@ errors:any;
 
 	logout(){
 		this.authservice.userLoggedOut(window.localStorage.getItem('user'));
+    window.sessionStorage.clear();
 		this.router.navigate(['']);
 	}
 }
