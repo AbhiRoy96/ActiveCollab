@@ -1,29 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpWebApiService } from '../../http-web-api.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { Validators } from '@angular/forms';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-@Component({
-  selector: 'app-create-team',
-  templateUrl: './create-team.component.html',
-  styleUrls: ['./create-team.component.css']
-})
-export class CreateTeamComponent {
 
-constructor(private _httpWebService: HttpWebApiService, private httpService: HttpWebApiService, private router: Router) { }
+
+@Component({
+  selector: 'app-teammembers',
+  templateUrl: './teammembers.component.html',
+  styleUrls: ['./teammembers.component.css']
+})
+export class TeammembersComponent implements OnInit {
+
+constructor(private _httpWebService: HttpWebApiService, private httpService: HttpWebApiService, private router: Router, private route: ActivatedRoute) { }
 
 teamid: string;
 username: string;
 projectid: string;
 doj: string;
 
-
+userdata: any;
+data:any;
 action:string;
 details:string;
 validate = true;
+
+  	
+	ngOnInit(){
+
+		this.userdata = this.route.params.subscribe(params=> {this.data = params['id']});
+  		this.teamid = this.data;
+
+		this._httpWebService.teamsData(this.teamid)
+		.subscribe( res => {
+			this.projectid = res.data.teamDetails[0].projectId;
+		},
+		error => {
+			this.router.navigate(['forbidden']);
+		});
+	}
+
 
   	validateSignUp(){
 

@@ -50,7 +50,8 @@ const Teams = Conn.define('teams', {
   teamId: { type: Sequelize.STRING, allowNull: false },          // Team Handle
   userId: { type: Sequelize.STRING, allowNull: false },
   projectId: { type: Sequelize.STRING, allowNull: false },
-  joiningDate: { type: Sequelize.DATE, allowNull: false }
+  joiningDate: { type: Sequelize.DATE, allowNull: false },
+  status: { type: Sequelize.STRING, allowNull: false },
 });
 
 const Timelines = Conn.define('timelines', {
@@ -71,6 +72,7 @@ const Requests = Conn.define('requests', {
   senderUserId: { type: Sequelize.STRING, allowNull: false },
   receiverUserId: { type: Sequelize.STRING, allowNull: false },
   projectId: { type: Sequelize.STRING, allowNull: false },
+  teamId: { type: Sequelize.STRING, allowNull: false },
   status: { type: Sequelize.STRING, allowNull: false }
 });
 

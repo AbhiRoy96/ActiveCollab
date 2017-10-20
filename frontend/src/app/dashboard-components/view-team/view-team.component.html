@@ -18,8 +18,8 @@
 				    <li class="list-group-item"><strong>Project Handle: </strong>{{item.projectId}}</li>
 				    <li class="list-group-item"><strong>Joined Since: </strong>{{item.joiningDate}}</li>
 				    <li class="list-group-item">
-				    	<button type="button" class="btn btn-primary btn-lg" (click)="settingRequest(item)">Add Team Members</button>
-				    	<button type="button" class="btn btn-primary btn-lg" (click)="updateRequest(item)">Quit Team</button>
+				    	<button type="button" id="membr" class="btn btn-primary btn-lg " (click)="addRequest(item)">Add Team Members</button>
+				    	<button type="button" class="btn btn-primary btn-lg" (click)="quitRequest(item)">Quit Team</button>
 				    </li>
 				  </ul>
 				</div>

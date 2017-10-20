@@ -53,14 +53,18 @@ export class ResRequestComponent implements OnInit {
   acceptRequest(item){
 
     this.body = this.userid + " Joined team" + item.projectId;
+    this._httpWebService.updateTeam(item.teamId, "joined")
     this._httpWebService.updateRequest(item.id, "accepted");
     this._httpWebService.createNews(this.userid,item.projectId,this.formattedDate,"Team Joining", this.body);
     document.getElementById("notify_"+item.id).classList.add("notification-seen");
   }
 
   rejectRequest(item){
+    this.body = this.userid + " Rejected team joining request!" + item.projectId;
+    this._httpWebService.updateTeam(item.teamId, "left");
     this._httpWebService.updateRequest(item.id, "rejected");
-    //deleteTeamRequest(item.teamId, , item.projectId)
+    this._httpWebService.deleteTeamRequest(item.teamId, this.userid, item.projectId);
+    this._httpWebService.createNews(this.userid,item.projectId,this.formattedDate,"Team Joining", this.body);
     document.getElementById("notify_"+item.id).classList.add("notification-seen");
   }
 

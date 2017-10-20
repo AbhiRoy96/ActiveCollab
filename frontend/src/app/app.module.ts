@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 // Parent Components
 
@@ -27,6 +28,7 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { HamburgerComponent } from './hamburger/hamburger.component';
+import { UserHamburgerComponent } from './user-hamburger/user-hamburger.component';
 
 // Dashboard components
 
@@ -41,6 +43,7 @@ import { UpdateProfileComponent } from './dashboard-components/update-profile/up
 
 import { CreateTeamComponent } from './dashboard-components/create-team/create-team.component';
 import { ViewTeamComponent } from './dashboard-components/view-team/view-team.component';
+import { TeammembersComponent } from './dashboard-components/teammembers/teammembers.component'; 
 
 import { ViewBugTickitComponent } from './dashboard-components/view-bug-tickit/view-bug-tickit.component';
 import { CreateBugTickitComponent } from './dashboard-components/create-bug-tickit/create-bug-tickit.component';
@@ -69,12 +72,6 @@ import { PasswordGuard } from './password.guard';
 
 
 
-
-
-
-
-
-
 const appRoutes:Routes = [
   {  path: '',  component: GetStartedComponent  },
   {  path: 'signup',  
@@ -91,7 +88,69 @@ const appRoutes:Routes = [
   {  path: 'updatePassword/:id', canActivate: [PasswordGuard], component: PasswordChangeComponent },
   {  path: 'forbidden', component: ErrorComponentComponent },
   {  path: 'loading', canActivate: [AuthGuard], component: LoadingPageComponent },
-  {  path: 'dashboard',  canActivate: [AuthGuard],  component: UserDashboardComponent },
+  {  path: 'dashboard',  
+     canActivate: [AuthGuard],  
+     component: UserDashboardComponent, 
+     children: [
+       {
+         path: '',
+         component: MainPageComponent
+       },
+       {
+         path: 'profile',
+         component: ProfileViewComponent
+       },
+       {
+         path: 'myteams',
+         component: ViewTeamComponent
+       },
+       {
+         path: 'myteamrequests',
+         component: ResRequestComponent
+       },
+       {
+         path: 'newsfeeds',
+         component: NewsFeedsComponent
+       },
+       {
+         path: 'myprojects',
+         component: ViewProjectsComponent
+       }, 
+       {
+         path: 'createtodo',
+         component: CreateTodoComponent
+       },
+       {
+         path: 'mytodos',
+         component: ViewTodoComponent
+       },
+       {
+         path: 'pendingtodos',
+         component: ResTodoComponent
+       },
+       {
+         path: 'newbugreport',
+         component: CreateBugTickitComponent
+       },
+       {
+         path: 'bugs',
+         component: ViewBugTickitComponent
+       },
+       {
+         path: 'bugsolved',
+         component: ResBugTickitComponent
+       },
+       {
+         path: 'accountsettings',
+         component: UpdateProfileComponent
+       }
+     ]
+  },
+  
+
+
+
+
   {  path: 'cpanel',  
      canActivate: [AdminAuthGuard],  
      component: AdminDashboardComponent, 
@@ -168,10 +227,10 @@ const appRoutes:Routes = [
          path: 'accountsettings',
          component: UpdateProfileComponent
        },
-
-
-       
-       
+       {
+         path: 'addteammembers/:id',
+         component: TeammembersComponent
+       }      
      ]
   },
 
@@ -216,6 +275,8 @@ const appRoutes:Routes = [
     MainPageComponent,
     LoadingPageComponent,
     HamburgerComponent,
+    UserHamburgerComponent,
+    TeammembersComponent,
 
   ],
   imports: [
@@ -223,6 +284,7 @@ const appRoutes:Routes = [
     BrowserModule, 
     HttpModule,
     FormsModule,
+    RecaptchaModule.forRoot(),
 
   ],
   providers: [HttpWebApiService, UserAuthService, AuthGuard, AdminAuthGuard, PasswordGuard],

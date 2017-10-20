@@ -59,7 +59,8 @@ li{
 	padding: 0;
 	position: absolute;
 	background-color: #d3d9df;
-	left:338px;
+	left:337px;
+	width: 100%;
 	height: 100vh;
 }
 

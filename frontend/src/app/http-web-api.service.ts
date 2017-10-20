@@ -45,7 +45,7 @@ export class HttpWebApiService {
 
 
   createNewTeam(teamid,username,projectid,doj){
-    const newUser = "http://localhost:4000/graphql?query=mutation { createTeam(teamId: \""+teamid+"\", userId: \""+username+"\", projectId: \""+projectid+"\", joiningDate: \""+doj+"\") { id } }";
+    const newUser = "http://localhost:4000/graphql?query=mutation { createTeam(teamId: \""+teamid+"\", userId: \""+username+"\", projectId: \""+projectid+"\", joiningDate: \""+doj+"\", status: \"pending\") { id } }";
     const reqBody = "";
 
 
@@ -55,7 +55,7 @@ export class HttpWebApiService {
 
 
   myTeams(userid){
-    const teamData = this._Http.get('http://localhost:4000/graphql?query={teamDetails(userId: \"'+userid+'\"){teamId projectId joiningDate} }')
+    const teamData = this._Http.get('http://localhost:4000/graphql?query={teamDetails(userId: \"'+userid+'\", status: "joined"){teamId projectId joiningDate} }')
       .map((res:Response) => res.json());
 
      return teamData;
@@ -70,8 +70,8 @@ export class HttpWebApiService {
   }
 
 
-  sendRequest(sender, receiver, projectId, status){
-    const newUser = "http://localhost:4000/graphql?query=mutation { createRequest(senderUserId: \""+sender+"\", receiverUserId: \""+receiver+"\", projectId: \""+projectId+"\", status: \""+status+"\") { id } }";
+  sendRequest(sender, receiver, projectId, teamId, status){
+    const newUser = "http://localhost:4000/graphql?query=mutation { createRequest(senderUserId: \""+sender+"\", receiverUserId: \""+receiver+"\", projectId: \""+projectId+"\",teamId: \""+teamId+"\", status: \""+status+"\") { id } }";
     const reqBody = "";
 
 
@@ -81,7 +81,7 @@ export class HttpWebApiService {
 
 
   getRequests(receiver){
-    const teamData = this._Http.get('http://localhost:4000/graphql?query={myRequests(receiverUserId: "'+receiver+'", status: \"pending\") {id senderUserId receiverUserId projectId } }')
+    const teamData = this._Http.get('http://localhost:4000/graphql?query={myRequests(receiverUserId: "'+receiver+'", status: \"pending\") {id senderUserId receiverUserId projectId teamId } }')
       .map((res:Response) => res.json());
 
      return teamData;
@@ -302,6 +302,38 @@ export class HttpWebApiService {
     const req = this._Http.post(newUser, reqBody);
     req.subscribe();
   }
+
+
+  updatePassword(email, password){
+    const newUser = "http://localhost:4000/graphql?query=mutation{passwordUpdate(email: \""+email+"\", password: \""+password+"\"){ id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+
+  updateTeam(teamid, status){
+    const newUser = "http://localhost:4000/graphql?query=mutation{updateTeam(teamId: \""+teamid+"\", status: \""+status+"\") { id } }";
+    const reqBody = "";
+
+
+    const req = this._Http.post(newUser, reqBody);
+    req.subscribe();
+  }
+
+
+  teamsData(teamid){
+    const teamData = this._Http.get('http://localhost:4000/graphql?query={teamDetails(teamId: \"'+teamid+'\", status: "joined"){ teamId projectId } }')
+      .map((res:Response) => res.json());
+
+     return teamData;
+  }
+
+
+
+
 
 
 }

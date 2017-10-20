@@ -7,18 +7,19 @@
 
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="../../assets/avatar.jpg" width="30" height="30" class="d-inline-block align-top img-circle" alt="bluebox-logo">
           Hello {{user}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="right: 0; left: auto;">
-          <a class="dropdown-item" href="#">View Profile</a>
-          <a class="dropdown-item" href="#">Change Profile Settings</a>
-          <a class="dropdown-item" (click)='logout()' >Sign Out</a>
+          <a class="dropdown-item" routerLink="/dashboard/profile" routerLinkActive="active"><i class="material-icons">person</i> View Profile</a>
+          <a class="dropdown-item" routerLink="/dashboard/accountsettings" routerLinkActive="active"><i class="material-icons">settings</i>  Change Profile Settings</a>
+          <a class="dropdown-item" (click)='logout()' ><i class="material-icons">power_settings_new</i>  Sign Out</a>
         </div>
       </li>
 </nav>
 <div class="dashboard-content">
 	<div class="row">
-	    <div class="col-3 home"><hamburger></hamburger></div>
-	    <div class="col-9 sign-form"><router-outlet></router-outlet></div>
+	    <div class="col-3 nav-panel"><user-hamburger></user-hamburger></div>
+	    <div class="col-9 route-content"><router-outlet></router-outlet></div>
   	</div>
 </div>

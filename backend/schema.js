@@ -102,7 +102,9 @@ const Team = new GraphQLObjectType({
       projectId: { type: GraphQLString,
         resolve (teams) { return teams.projectId; } },
       joiningDate: { type: GraphQLDate,
-        resolve (teams) { return teams.joiningDate; } }
+        resolve (teams) { return teams.joiningDate; } },
+      status: { type: GraphQLString,
+        resolve (teams) { return teams.status; } },
     };
   }
 });
@@ -164,6 +166,8 @@ const Request = new GraphQLObjectType({
         resolve (requests) { return requests.receiverUserId; } },
       projectId: { type: GraphQLString,
         resolve (requests) { return requests.projectId; } },
+      teamId: { type: GraphQLString,
+        resolve (requests) { return requests.teamId; } },
       status: { type: GraphQLString,
         resolve (requests) { return requests.status; } }
     };
@@ -331,7 +335,8 @@ const Query = new GraphQLObjectType({
           id: { type: GraphQLInt },
           teamId: { type: GraphQLString },
           userId: { type: GraphQLString },
-          projectId: { type: GraphQLString }
+          projectId: { type: GraphQLString },
+          status: { type: GraphQLString },
         },
         resolve (root, args) {
           return Db.models.teams.findAll({ where: args });
@@ -559,14 +564,16 @@ const Mutation = new GraphQLObjectType({
           teamId: { type: new GraphQLNonNull(GraphQLString) },
           userId: { type: new GraphQLNonNull(GraphQLString) },
           projectId: { type: new GraphQLNonNull(GraphQLString) },
-          joiningDate: { type: new GraphQLNonNull(GraphQLDate) }
+          joiningDate: { type: new GraphQLNonNull(GraphQLDate) },
+          status: { type: new GraphQLNonNull(GraphQLString) },
       },
       resolve (_, args) {
         return Db.models.teams.create({
           teamId: args.teamId,
           userId: args.userId,
           projectId: args.projectId,
-          joiningDate: args.joiningDate
+          joiningDate: args.joiningDate,
+          status: args.status
         });
       }
     },
@@ -646,6 +653,7 @@ const Mutation = new GraphQLObjectType({
           senderUserId: { type: new GraphQLNonNull(GraphQLString) },
           receiverUserId: { type: new GraphQLNonNull(GraphQLString) },
           projectId: { type: new GraphQLNonNull(GraphQLString) },
+          teamId: { type: new GraphQLNonNull(GraphQLString) },
           status: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve (_, args) {
@@ -653,6 +661,7 @@ const Mutation = new GraphQLObjectType({
           senderUserId: args.senderUserId,
           receiverUserId: args.receiverUserId,
           projectId: args.projectId,
+          teamId: args.teamId,
           status: args.status
         });
       }
@@ -714,14 +723,13 @@ const Mutation = new GraphQLObjectType({
     passwordUpdate: {
       type: User,
       args: {
-          userId: { type: new GraphQLNonNull(GraphQLString) },
-          email: { type: GraphQLString },
+          email: { type: new GraphQLNonNull(GraphQLString) },
           password: { type: GraphQLString }
         },
         resolve (_, args) {
           return Db.models.users.update({
             password: args.password
-          },{where: { userId: args.userId, email: args.email }});
+          },{where: { email: args.email }});
         }
       },
 
@@ -913,6 +921,20 @@ const Mutation = new GraphQLObjectType({
             return Db.models.slots.update({
               status: args.status
             },{where: { id: args.id, timelineId: args.timelineId }});
+          }
+        },
+
+
+        updateTeam: {
+          type: Team,
+          args: {
+            teamId: { type: new GraphQLNonNull(GraphQLString) },
+            status: { type: GraphQLString }
+          },
+          resolve (_, args) {
+            return Db.models.teams.update({
+              status: args.status
+            },{where: { teamId: args.teamId }});
           }
         },
 

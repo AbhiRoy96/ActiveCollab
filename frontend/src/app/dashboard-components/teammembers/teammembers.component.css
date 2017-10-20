@@ -79,12 +79,12 @@ label{
 
 
 .flex-parent{
-	padding: 50px 70px 30px 70px;
-
+	padding: 40px 70px 30px 70px;
+	position: absolute;
 	background-color: #d3d9df;
 	text-align: center;
 	width: 100%;
-	height: 70vh;
+	height: 100%;
 }
 
 
@@ -103,7 +103,8 @@ label{
 .flex-item{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 200;
-	padding: 80px;
+	padding-right: 70px;
+	padding-left: 30px;
 	padding-bottom: 20px;
 
 	text-align: justify;
@@ -131,16 +132,20 @@ label{
 }
 
 
-.form-group{
-	padding-left: 350px;
-	padding-right: 350px;
+.csp:focus{
+	border: 2px solid #1A237E;
 }
 
-.errorDetect{
-	font-weight: 400;
+.invalid-input{
+	border-bottom: 2px solid red;
 }
 
 
-.hidebutt{
-	visibility: hidden;
+.alert{
+	margin-bottom: 0;
+	position:flex;
+	visibility:hidden;
 }
+
+
+
