@@ -1,6 +1,6 @@
 {
   "name": "active_collab",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Active Collab Pro 17_Backend",
   "main": "index.js",
   "scripts": {

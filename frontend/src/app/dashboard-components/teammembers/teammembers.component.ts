@@ -119,8 +119,6 @@ validate = true;
           .subscribe(res => {
               const teamData = res;
 
-              
-              if(teamData.data.teamDetails[0] == null){
                 this.httpService.createNewTeam(this.teamid,this.username,this.projectid,this.doj);
                 this.httpService.sendRequest(window.localStorage.getItem('user'),this.username,this.projectid,this.teamid,"pending");
 
@@ -129,21 +127,10 @@ validate = true;
                 document.getElementById("message").classList.add("alert-success");
                 document.getElementById("message").classList.remove("alert-danger");
                 document.getElementById('message').style.visibility = 'visible';
-               
-              }else{
-                if(teamData.data.teamDetails[0].teamId == this.teamid){
-                  document.getElementById("teamid").classList.add("invalid-input");
-                  this.action = "Oh snap!";
-                  this.details = "Change your Team Handle it is already taken, and try submitting again."; 
-                  
-                  document.getElementById("message").classList.remove("alert-success");
-                  document.getElementById("message").classList.add("alert-danger");
-                  document.getElementById('message').style.visibility = 'visible';
-                  
-                  this.validate = false;
-                }
-               }
-
+            
+            },
+            error => {   
+              this.router.navigate(['forbidden']);
           });
 
 

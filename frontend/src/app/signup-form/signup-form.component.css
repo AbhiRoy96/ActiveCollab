@@ -131,3 +131,20 @@ label{
 }
 
 
+.csp:focus{
+	border: 2px solid #1A237E;
+}
+
+.invalid-input{
+	border-bottom: 2px solid red;
+}
+
+
+.errorDetect{
+	font-weight: 400;
+}
+
+
+.hidebutt{
+	visibility: hidden;
+}
