@@ -202,7 +202,7 @@ errors:any;
         this._httpWebService.createNews(window.localStorage.getItem('user'),this.firstname,this.formattedDate,"Profile Update ", "Updated profile");
 
         this.action = "Well done!";
-        this.details = "You successfully updated your project settings."; 
+        this.details = "You successfully updated your profile settings."; 
         document.getElementById("message").classList.add("alert-success");
         document.getElementById("message").classList.remove("alert-danger");
         document.getElementById('message').style.visibility = 'visible';

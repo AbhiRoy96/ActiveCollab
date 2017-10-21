@@ -49,6 +49,7 @@ export class UserTeamsComponent implements OnInit {
     this.body = this.userid + " Left the team!";
     this._httpWebService.deleteTeamRequest(item.teamId, this.userid, item.projectId);
     this._httpWebService.createNews(this.userid, item.projectId, this.formattedDate, "Team Status", this.body);
+    document.getElementById("notify_"+item.id).classList.add("notification-seen");
   }
 
 }

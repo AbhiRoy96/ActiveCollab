@@ -54,7 +54,7 @@ export class ViewProjectsComponent implements OnInit {
     			}
     			
     			if(this.projectList.length == 0){
-            		document.getElementById("message").classList.add("mess");
+            document.getElementById("message").classList.add("mess");
     				document.getElementById('requ').style.visibility = 'hidden';
     				document.getElementById('message').style.visibility = 'visible';
     			}

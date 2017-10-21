@@ -24,6 +24,8 @@ doj: string;
 
 userdata: any;
 data:any;
+d:any = new Date();
+formattedDate:any = this.d.toISOString();
 action:string;
 details:string;
 validate = true;
@@ -37,6 +39,7 @@ validate = true;
 		this._httpWebService.teamsData(this.teamid)
 		.subscribe( res => {
 			this.projectid = res.data.teamDetails[0].projectId;
+      this.doj = this.formattedDate;
 		},
 		error => {
 			this.router.navigate(['forbidden']);

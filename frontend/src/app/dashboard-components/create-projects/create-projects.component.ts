@@ -146,16 +146,16 @@ validate = true;
                
 
                 this.action = "Well done!";
-                this.details = "You successfully registered team member."; 
+                this.details = "You successfully registered Project."; 
                 document.getElementById("message").classList.add("alert-success");
                 document.getElementById("message").classList.remove("alert-danger");
                 document.getElementById('message').style.visibility = 'visible';
                
               }else{
                 if(teamData.data.projectDetails[0].projectId == this.projectid){
-                  document.getElementById("teamid").classList.add("invalid-input");
+                  document.getElementById("projectid").classList.add("invalid-input");
                   this.action = "Oh snap!";
-                  this.details = "Change your Team Handle it is already taken, and try submitting again."; 
+                  this.details = "Change your Project Handle it is already taken, and try submitting again."; 
                   
                   document.getElementById("message").classList.remove("alert-success");
                   document.getElementById("message").classList.add("alert-danger");

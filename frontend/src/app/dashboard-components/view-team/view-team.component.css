@@ -110,4 +110,8 @@ ul{
 	color: white;
 }
 
+.notification-seen{
+	position: absolute;
+	visibility: hidden;	
+}
 

@@ -11,7 +11,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
   templateUrl: './create-team.component.html',
   styleUrls: ['./create-team.component.css']
 })
-export class CreateTeamComponent {
+export class CreateTeamComponent implements OnInit{
 
 constructor(private _httpWebService: HttpWebApiService, private httpService: HttpWebApiService, private router: Router) { }
 
@@ -20,12 +20,19 @@ username: string;
 projectid: string;
 doj: string;
 
-
+d:any = new Date();
+formattedDate:any = this.d.toISOString();
 action:string;
 details:string;
 validate = true;
 
-  	validateSignUp(){
+  	
+    ngOnInit(){
+      this.doj = this.formattedDate; 
+    }
+
+
+    validateSignUp(){
 
   		this.validate = true;
 

@@ -111,3 +111,7 @@ ul{
 }
 
 
+.notification-seen{
+	position: absolute;
+	visibility: hidden;	
+}
