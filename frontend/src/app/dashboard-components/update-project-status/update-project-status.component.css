@@ -29,13 +29,13 @@ a{
 }
 
 button:hover{
-	width:22%;
+	width:29%;
 	background-color: #F50057;
 	border-color: #F50057; 
 }
 
 button{
-	width:18%;
+	width:25%;
 	height: 8vh;
 	background-color: #1A237E;
 	border-color: #1A237E; 
